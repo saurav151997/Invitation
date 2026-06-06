@@ -227,14 +227,67 @@
             font-weight: 500;
         }
 
+        /* --- SCRATCH CARD DESIGN BLOCK --- */
+        .scratch-card-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            height: 170px;
+            margin: 25px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background: #fffbef;
+            border: 2px solid var(--gold);
+        }
+
+        .scratch-under-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            padding: 15px;
+        }
+
+        #scratch-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="%23b8851c" opacity="0.4"/></svg>') 16 16, pointer;
+            touch-action: none;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* --- CONFETTI CANVAS OVERLAY --- */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9998;
+            pointer-events: none;
+            display: none;
+        }
+
         /* --- COUNTDOWN BOX --- */
         .countdown-container {
             background: #ebdcb9;
             border-radius: 10px;
             padding: 10px 15px;
-            margin: 30px auto;
-            max-width: 350px;
-            border: 2px solid var(--gold);
+            margin: 15px auto 0 auto;
+            width: 100%;
+            max-width: 320px;
+            border: 1px solid var(--gold);
             color: var(--text-dark);
             display: flex;
             justify-content: space-between;
@@ -242,9 +295,9 @@
         }
 
         .save-the-date-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.2rem;
-            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--text-maroon);
             font-weight: bold;
         }
 
@@ -280,191 +333,4 @@
             font-family: 'Great Vibes', cursive;
             font-size: 2.2rem;
             color: var(--text-maroon);
-            margin: 25px 0 10px 0;
-        }
-
-        /* --- VENUE BOX CARD --- */
-        .venue-card {
-            width: 100%;
-            background: #fff;
-            margin: 20px auto;
-            border-radius: 12px;
-            padding: 25px 20px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-        }
-
-        .map-btn {
-            display: inline-block;
-            margin-top: 18px;
-            background: var(--text-maroon);
-            color: #fff;
-            padding: 12px 32px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(110, 28, 36, 0.25);
-            transition: transform 0.2s;
-        }
-
-        .map-btn:active {
-            transform: scale(0.96);
-        }
-
-        .footer-names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: var(--text-maroon);
-            margin-top: 35px;
-        }
-
-        .hashtag {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: #888;
-            margin-top: 5px;
-            font-weight: 600;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="petal-container"></div>
-
-    <div id="envelope-screen">
-        <div class="envelope" onclick="unlockInvitation()">
-            <div class="wax-seal">
-                <div class="wax-seal-inner">S & T</div>
-            </div>
-        </div>
-        <h1 class="landing-title">You're Invited</h1>
-        <p class="landing-subtitle">Tap envelope to view invitation</p>
-    </div>
-
-    <main class="main-invitation" id="mainInviteContainer">
-        
-        <section class="invite-section">
-            <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" alt="Shree Ganesha Header Asset">
-            </div>
-            
-            <div class="mantra">|| Shree Ganeshay Namah ||</div>
-            <p class="invitation-line">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
-            
-            <h1 class="cursive-name">Saurav</h1>
-            <div class="with-text">with</div>
-            <h1 class="cursive-name">Tannu</h1>
-            
-            <div class="parents-info">
-                S/o Mr. Diwakar Misjra & Mrs. Sonu Mishra
-                <div class="with-text" style="font-size: 1.5rem; margin: 15px 0;">and</div>
-                D/o Mr. Pankaj Choubey & Mrs. Ujjwala Choubey
-            </div>
-        </section>
-
-        <section class="invite-section">
-            <div class="countdown-container">
-                <span class="save-the-date-title">Save the Date | 24th June 2026</span>
-                
-                <div class="countdown-box" id="timer">
-                    <div class="countdown-item" id="days">00<span>Days</span></div>
-                    <div class="countdown-item" id="hours">00<span>Hrs</span></div>
-                    <div class="countdown-item" id="mins">00<span>Min</span></div>
-                </div>
-            </div>
-
-            <h2 class="section-header-cursive">Events Schedule</h2>
-            <p class="invitation-line" style="font-weight:600; color: var(--text-dark);">
-                Engagment Ceremony:<br>10:30 AM Onwards
-            </p>
-        </section>
-
-        <section class="invite-section">
-            <h2 class="section-header-cursive">Where We Celebrate</h2>
-            
-            <div class="venue-card">
-                <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">Fulai Garden Hall</p>
-                <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">Zirapwadi, Phaltan, Satara, Maharashtra</p>
-                
-                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Phaltan+Satara" target="_blank" class="map-btn">Open Map</a>
-            </div>
-
-            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">WITH LOVE</div>
-            <div class="footer-names">Saurav & Tannu</div>
-            <div class="hashtag">#SAURAVANDTANNU</div>
-            <div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-weight: 500;">[24th June 2026]</div>
-        </section>
-    </main>
-
-    <script>
-        function unlockInvitation() {
-            document.getElementById('envelope-screen').classList.add('opened');
-            document.getElementById('mainInviteContainer').style.display = 'block';
-            setTimeout(generateFlowerPetals, 400);
-        }
-
-        function generateFlowerPetals() {
-            const rootContainer = document.getElementById('petal-container');
-            if(!rootContainer) return;
-            const totalPetalsCount = 30; 
-
-            for (let i = 0; i < totalPetalsCount; i++) {
-                let singlePetal = document.createElement('div');
-                singlePetal.classList.add('petal');
-                
-                let positionLeft = Math.random() * 100;        
-                let variableScale = Math.random() * 14 + 10;   
-                let downwardSpeed = Math.random() * 5 + 6;     
-                let swaySpeed = Math.random() * 3 + 2.5;       
-                let timelineDelay = Math.random() * 8;         
-
-                singlePetal.style.left = `${positionLeft}vw`;
-                singlePetal.style.width = `${variableScale}px`;
-                singlePetal.style.height = `${variableScale}px`;
-                singlePetal.style.animationDuration = `${downwardSpeed}s, ${swaySpeed}s`;
-                singlePetal.style.animationDelay = `${timelineDelay}s, ${timelineDelay}s`;
-
-                rootContainer.appendChild(singlePetal);
-            }
-        }
-
-        // Safe explicit date configuration
-        const targetEventTimestamp = new Date(2026, 5, 24, 18, 30, 0).getTime(); 
-
-        const countdownProcessor = setInterval(() => {
-            const currentSystemTime = new Date().getTime();
-            const distanceRemaining = targetEventTimestamp - currentSystemTime;
-
-            const timerContainer = document.getElementById('timer');
-            if(!timerContainer) return;
-
-            if (distanceRemaining <= 0) {
-                clearInterval(countdownProcessor);
-                timerContainer.innerHTML = "<div style='font-size:0.75rem; font-weight:bold; color:var(--text-maroon);'>Celebration Started!</div>";
-                return;
-            }
-
-            const calculationDays = Math.floor(distanceRemaining / (1000 * 60 * 60 * 24));
-            const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
-
-            const dEl = document.getElementById('days');
-            const hEl = document.getElementById('hours');
-            const mEl = document.getElementById('mins');
-
-            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
-            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
-            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
-            
-        }, 1000);
-    </script>
-</body>
-</html>
+            margin: 2
