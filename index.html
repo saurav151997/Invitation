@@ -10,7 +10,6 @@
 
         :root {
             --sage-bg: #cbd7c5;
-            --envelope-green: #a3b899;
             --gold: #d4af37;
             --gold-dark: #b59226;
             --cream: #fdfbf7;
@@ -52,7 +51,6 @@
             transform: translateY(-100vh);
         }
 
-        /* Intricate lace floral pattern envelope mockup */
         .envelope {
             position: relative;
             width: 300px;
@@ -64,11 +62,8 @@
             justify-content: center;
             align-items: center;
             border: 1px solid rgba(0,0,0,0.05);
-            /* Crisp embedded lace-like line artwork pattern */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' fill='none' stroke='%23decfa6' stroke-width='0.5' stroke-opacity='0.4'/%3E%3C/svg%3E");
         }
 
-        /* Beautiful traditional lace triangular flap overlay */
         .envelope::before {
             content: '';
             position: absolute;
@@ -76,13 +71,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,60 L100,0 Z' fill='%23faf4eb' stroke='%23d4af37' stroke-width='0.75'/%3E%3Ccircle cx='50' cy='45' r='12' fill='none' stroke='%23d4af37' stroke-width='0.5' stroke-dasharray='1,1'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,60 L100,0 Z' fill='%23faf4eb' stroke='%23d4af37' stroke-width='0.75'/%3E%3C/svg%3E");
             background-size: 100% 100%;
             z-index: 1;
             pointer-events: none;
         }
 
-        /* Shimmering Gold Wax Seal */
         .wax-seal {
             position: relative;
             width: 70px;
@@ -91,33 +85,19 @@
             border-radius: 50%;
             z-index: 2;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
             display: flex;
             justify-content: center;
             align-items: center;
             border: 1px solid #b88d21;
             animation: pulse 2.2s infinite ease-in-out;
-            transition: transform 0.1s;
-        }
-
-        .wax-seal:active {
-            transform: scale(0.9);
         }
 
         .wax-seal-inner {
-            width: 54px;
-            height: 54px;
-            border: 1px dashed rgba(255,255,255,0.4);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-family: 'Playfair Display', serif;
             font-size: 0.95rem;
             color: #fff;
             font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-            letter-spacing: 1px;
         }
 
         .landing-title {
@@ -125,8 +105,6 @@
             font-size: 3.2rem;
             color: #4a5d45;
             margin-top: 35px;
-            text-align: center;
-            font-weight: 400;
         }
 
         .landing-subtitle {
@@ -134,8 +112,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #63775e;
-            margin-top: 5px;
-            font-weight: 500;
         }
 
         /* --- SCREEN 2: MAIN INVITATION FRAME --- */
@@ -152,25 +128,21 @@
             position: relative;
             padding: 50px 24px;
             text-align: center;
-            background-color: var(--cream);
         }
 
-        /* Precision CSS Vectors replacing old broken graphics assets entirely */
+        /* Pure CSS Frame Border - No Images Allowed */
         .floral-card-frame {
-            border: 12px solid #fff;
+            border: 15px solid #fff;
             outline: 1px solid #ebdcb9;
-            outline-offset: -8px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23cbd7c5' fill-opacity='0.15'%3E%3Cpath d='M10 0 C20 10 20 20 0 30 C10 20 20 10 10 0 Z'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23822931' fill-opacity='0.15'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .ganesha-wrapper {
-            margin-bottom: 12px;
+            outline-offset: -10px;
+            background-color: var(--cream);
         }
 
         .ganesha-svg {
             width: 55px;
             height: 55px;
             fill: #cda231;
+            margin-bottom: 10px;
         }
 
         .mantra {
@@ -187,7 +159,6 @@
             font-size: 0.82rem;
             line-height: 1.65;
             color: #666;
-            font-weight: 400;
             max-width: 320px;
             margin: 12px auto;
         }
@@ -197,23 +168,20 @@
             font-size: 4.8rem;
             color: var(--text-maroon);
             line-height: 1;
-            margin: 10px 0;
-            font-weight: 400;
+            margin: 15px 0;
         }
 
         .with-text {
             font-family: 'Great Vibes', cursive;
             font-size: 2.2rem;
             color: var(--gold-dark);
-            margin: 2px 0;
-            font-style: italic;
         }
 
         .parents-info {
             font-size: 0.8rem;
             color: #5a5a5a;
             line-height: 1.7;
-            margin-top: 20px;
+            margin-top: 25px;
             padding-top: 15px;
             border-top: 1px dashed #e4d8be;
         }
@@ -223,7 +191,6 @@
             font-family: 'Great Vibes', cursive;
             font-size: 3.5rem;
             color: #333;
-            margin-bottom: 2px;
         }
 
         .date-display {
@@ -236,7 +203,6 @@
             text-transform: uppercase;
         }
 
-        /* Premium Golden Grid Countdown Widget UI */
         .countdown-box {
             background: linear-gradient(135deg, #dfab41 0%, #b8851c 100%);
             border-radius: 10px;
@@ -245,7 +211,6 @@
             justify-content: center;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 10px 25px rgba(184, 133, 28, 0.3);
             max-width: 310px;
             margin: 0 auto;
             border: 1px solid rgba(255,255,255,0.2);
@@ -266,10 +231,8 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: rgba(255,255,255,0.85);
             margin-top: 4px;
-            font-weight: 500;
         }
 
         .countdown-divider {
@@ -283,88 +246,40 @@
             font-family: 'Great Vibes', cursive;
             font-size: 3.4rem;
             color: var(--text-maroon);
-            margin-bottom: 8px;
         }
 
-        /* --- SCRATCH COUPON SYSTEM --- */
-        .scratch-wrapper {
-            position: relative;
+        /* --- VENUE SYSTEM --- */
+        .venue-card {
             width: 100%;
             max-width: 330px;
-            height: 210px;
+            background: #f4f1ea;
             margin: 18px auto;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 5px solid #fff;
-            background: #fdfaf4;
-        }
-
-        .map-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Stylized Vector Map Fallback layout element */
-        .map-vector-fallback {
-            width: 100%;
-            height: 100%;
-            background-color: #f4f1ea;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            text-align: center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath d='M0 30 L30 0 M0 0 L30 30' fill='none' stroke='%23e2ded5' stroke-width='0.5'/%3E%3C/svg%3E");
+            padding: 25px 15px;
+            border: 1px solid #ebdcb9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .map-icon-svg {
             width: 42px;
             height: 42px;
             fill: var(--text-maroon);
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .map-btn {
-            margin-top: 10px;
+            display: inline-block;
+            margin-top: 15px;
             background: var(--text-maroon);
-            color: #white;
-            border: none;
-            padding: 8px 20px;
+            color: #fff;
+            padding: 10px 24px;
             border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(130,41,49,0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-
-        .scratch-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 5;
-            cursor: pointer;
-            touch-action: none;
-        }
-
-        .scratch-hint {
-            font-size: 0.78rem;
-            color: var(--gold-dark);
-            font-weight: 600;
-            letter-spacing: 1px;
-            animation: bounce 2s infinite ease-in-out;
-            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(130,41,49,0.3);
         }
 
         .footer-names {
@@ -379,29 +294,15 @@
             letter-spacing: 3px;
             color: #888;
             margin-top: 4px;
-            font-weight: 500;
         }
 
-        #bg-audio { display: none; }
-
-        /* --- STYLING ANIMATIONS --- */
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(212,175,55,0.5); }
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
     </style>
 </head>
 <body>
-
-    <audio id="bg-audio" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
 
     <div id="envelope-screen">
         <div class="envelope" onclick="unlockInvitation()">
@@ -416,11 +317,9 @@
     <main class="main-invitation" id="mainInviteContainer">
         
         <section class="invite-section floral-card-frame">
-            <div class="ganesha-wrapper">
-                <svg class="ganesha-svg" viewBox="0 0 24 24">
-                    <path d="M12,2A2,2 0 0,0 10,4C10,4.75 10.4,5.42 11,5.77V7.23C9.31,7.63 8,9.16 8,11V13H7A2,2 0 0,0 5,15V17A2,2 0 0,0 7,19H8V20A2,2 0 0,0 10,22H14A2,2 0 0,0 16,20V19H17A2,2 0 0,0 19,17V15A2,2 0 0,0 17,13H16V11C16,9.16 14.69,7.63 13,7.23V5.77C13.6,5.42 14,4.75 14,4A2,2 0 0,0 12,2M10,11H14V13H10V11Z" />
-                </svg>
-            </div>
+            <svg class="ganesha-svg" viewBox="0 0 24 24">
+                <path d="M12,2A2,2 0 0,0 10,4C10,4.75 10.4,5.42 11,5.77V7.23C9.31,7.63 8,9.16 8,11V13H7A2,2 0 0,0 5,15V17A2,2 0 0,0 7,19H8V20A2,2 0 0,0 10,22H14A2,2 0 0,0 16,20V19H17A2,2 0 0,0 19,17V15A2,2 0 0,0 17,13H16V11C16,9.16 14.69,7.63 13,7.23V5.77C13.6,5.42 14,4.75 14,4A2,2 0 0,0 12,2M10,11H14V13H10V11Z" />
+            </svg>
             <div class="mantra">|| Shree Ganeshay Namah ||</div>
             <p class="invitation-line">We cordially invite you to witness the beginning of our love story and celebrate the wedding ceremony of...</p>
             
@@ -457,19 +356,13 @@
             <h2 class="section-header-cursive">Where We Celebrate</h2>
             <p class="invitation-line" style="margin-bottom: 15px; font-weight: 500;">Fulai Garden Hall, Zirapwadi, Satara, Maharashtra</p>
             
-            <div class="scratch-wrapper">
-                <div class="map-container">
-                    <div class="map-vector-fallback">
-                        <svg class="map-icon-svg" viewBox="0 0 24 24">
-                            <path d="M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5Z" />
-                        </svg>
-                        <p style="font-size: 0.82rem; font-weight:600; color:#333;">Fulai Garden Hall, Satara</p>
-                        <a href="https://maps.google.com" target="_blank" class="map-btn">Open In Google Maps</a>
-                    </div>
-                </div>
-                <canvas class="scratch-canvas" id="scratchCardCanvas"></canvas>
+            <div class="venue-card">
+                <svg class="map-icon-svg" viewBox="0 0 24 24">
+                    <path d="M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5Z" />
+                </svg>
+                <p style="font-size: 0.85rem; font-weight:600; color:#333;">Fulai Garden Hall, Satara</p>
+                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Satara" target="_blank" class="map-btn">Open In Google Maps</a>
             </div>
-            <div class="scratch-hint">✨ Scratch the gold card coupon to open map coordinates!</div>
 
             <div class="footer-names">Saurav & Tannu</div>
             <div class="hashtag">#SAURAVANDTANNU</div>
@@ -480,14 +373,6 @@
         function unlockInvitation() {
             document.getElementById('envelope-screen').classList.add('opened');
             document.getElementById('mainInviteContainer').style.display = 'block';
-            
-            const song = document.getElementById('bg-audio');
-            song.play().catch(() => {
-                console.log("Audio contextual trigger initialized smoothly.");
-            });
-
-            // Initialize Scratch overlay canvas execution safely
-            setTimeout(setupScratchCard, 350);
         }
 
         // Target Date Countdown System Clock Logic
@@ -499,7 +384,7 @@
 
             if (difference <= 0) {
                 clearInterval(counter);
-                document.getElementById('timer').innerHTML = "<div style='color:white; font-weight:600; font-size:1rem;'>The Celebration Has Begun!</div>";
+                document.getElementById('timer').innerHTML = "<div style='color:white; font-weight:600;'>The Celebration Has Begun!</div>";
                 return;
             }
 
@@ -513,60 +398,6 @@
             document.getElementById('mins').childNodes[0].textContent = m < 10 ? '0' + m : m;
             document.getElementById('secs').childNodes[0].textContent = s < 10 ? '0' + s : s;
         }, 1000);
-
-        // Responsive Scratch Engine Logic System Mapping
-        function setupScratchCard() {
-            const canvas = document.getElementById('scratchCardCanvas');
-            const ctx = canvas.getContext('2d');
-            let isDrawing = false;
-
-            // Accurate canvas mapping scaling calculations
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-
-            // High profile polished metallic gold gradient canvas texture render
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, '#e8b84b');
-            gradient.addColorStop(0.5, '#c99622');
-            gradient.addColorStop(1, '#f6dfa3');
-            
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Print crisp instructional fonts directly into the vector layer canvas 
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '600 13px Montserrat';
-            ctx.textAlign = 'center';
-            ctx.fillText('🎁 REVEAL VENUE LOCATION MAP', canvas.width / 2, canvas.height / 2 - 4);
-            ctx.font = '500 10px Montserrat';
-            ctx.fillStyle = 'rgba(255,255,255,0.85)';
-            ctx.fillText('Scratch overlay here with your finger', canvas.width / 2, canvas.height / 2 + 15);
-
-            function performScratch(e) {
-                if (!isDrawing) return;
-
-                const bounds = canvas.getBoundingClientRect();
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                
-                const posX = clientX - bounds.left;
-                const posY = clientY - bounds.top;
-
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(posX, posY, 26, 0, Math.PI * 2); 
-                ctx.fill();
-            }
-
-            canvas.addEventListener('mousedown', () => isDrawing = true);
-            canvas.addEventListener('touchstart', () => isDrawing = true);
-            canvas.addEventListener('mousemove', performScratch);
-            canvas.addEventListener('touchmove', (e) => {
-                performScratch(e);
-            });
-            window.addEventListener('mouseup', () => isDrawing = false);
-            window.addEventListener('touchend', () => isDrawing = false);
-        }
     </script>
 </body>
 </html>
