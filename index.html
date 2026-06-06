@@ -9,12 +9,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
         :root {
-            --sage-bg: #cbd7c5;
+            /* Adjusted colors to match the reference exactly */
+            --sage-bg: #9eb39f; /* Deep sage green for the envelope background */
             --gold: #d4af37;
-            --gold-dark: #b59226;
-            --cream: #faf6ee;
-            --text-maroon: #822931;
-            --text-dark: #3a3a3a;
+            --gold-gradient: linear-gradient(135deg, #d3a453 0%, #b8851c 100%);
+            --gold-dark: #b18c39;
+            --cream-bg: #fdfaf4; /* Soft cream background */
+            --text-maroon: #6e1c24; /* Deeper maroon for the names */
+            --text-dark: #333333;
         }
 
         * {
@@ -26,9 +28,44 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #e6e2da;
+            background-color: var(--cream-bg);
             color: var(--text-dark);
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- FALLING PETALS ANIMATION --- */
+        #petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Allows clicking through the petals */
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, #ffd1d8, #ffb6c1);
+            /* Creating a petal shape using border-radius */
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: fall linear infinite, sway ease-in-out infinite alternate;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { top: 110%; opacity: 0; }
+        }
+
+        @keyframes sway {
+            0% { transform: translateX(0px) rotate(0deg); }
+            100% { transform: translateX(30px) rotate(90deg); }
         }
 
         /* --- SCREEN 1: ENVELOPE LANDING --- */
@@ -44,7 +81,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+            transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
         }
 
         #envelope-screen.opened {
@@ -53,18 +90,17 @@
 
         .envelope {
             position: relative;
-            width: 290px;
-            height: 200px;
-            background-color: #fcf8f2;
-            border-radius: 8px;
+            width: 320px;
+            height: 220px;
+            background-color: #f7f1e6;
+            border-radius: 4px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Pure CSS Envelope Geometric Flap */
+        /* Intricate Envelope Flap mimicking lace/mandala (simplified via CSS geometry) */
         .envelope::before {
             content: '';
             position: absolute;
@@ -72,337 +108,3 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,55 L100,0 Z' fill='%23f4ede2' stroke='%23d4af37' stroke-width='0.5'/%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .wax-seal {
-            position: relative;
-            width: 65px;
-            height: 65px;
-            background: radial-gradient(circle, #f5d376 0%, #ca9b2c 70%, #9a7217 100%);
-            border-radius: 50%;
-            z-index: 2;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #b88d21;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        .wax-seal-inner {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.9rem;
-            color: #fff;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .landing-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: #4a5d45;
-            margin-top: 30px;
-        }
-
-        .landing-subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #63775e;
-            margin-top: 5px;
-        }
-
-        /* --- SCREEN 2: MAIN INVITATION --- */
-        .main-invitation {
-            max-width: 450px;
-            margin: 0 auto;
-            background-color: var(--cream);
-            box-shadow: 0 0 25px rgba(0,0,0,0.1);
-            min-height: 100vh;
-            display: none;
-        }
-
-        .invite-section {
-            position: relative;
-            padding: 45px 20px;
-            text-align: center;
-        }
-
-        /* Elegant Double Gold Frame Border */
-        .royal-frame {
-            border: 15px solid #fff;
-            outline: 1px solid #ebdcb9;
-            outline-offset: -10px;
-            background-color: var(--cream);
-        }
-
-        .ganesha-svg {
-            width: 50px;
-            height: 50px;
-            fill: #cda231;
-            margin-bottom: 8px;
-        }
-
-        .mantra {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            font-style: italic;
-            letter-spacing: 1px;
-            color: var(--text-maroon);
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .invitation-line {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #555;
-            max-width: 300px;
-            margin: 15px auto;
-        }
-
-        .cursive-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            color: var(--text-maroon);
-            line-height: 1.1;
-            margin: 10px 0;
-        }
-
-        .with-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.2rem;
-            color: var(--gold-dark);
-            margin: 5px 0;
-        }
-
-        .parents-info {
-            font-size: 0.8rem;
-            color: #555;
-            line-height: 1.7;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px dashed #e4d8be;
-        }
-
-        /* --- COUNTDOWN --- */
-        .save-the-date-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--text-maroon);
-            margin-bottom: 5px;
-        }
-
-        .date-display {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--gold-dark);
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .countdown-box {
-            background: linear-gradient(135deg, #dfab41 0%, #b8851c 100%);
-            border-radius: 8px;
-            padding: 15px 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            max-width: 300px;
-            margin: 0 auto;
-            box-shadow: 0 8px 20px rgba(184, 133, 28, 0.2);
-        }
-
-        .countdown-item {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: #fff;
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 50px;
-        }
-
-        .countdown-item span {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.85);
-            margin-top: 4px;
-        }
-
-        .countdown-divider {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.4);
-            padding-bottom: 15px;
-        }
-
-        .section-header-cursive {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: var(--text-maroon);
-            margin-top: 10px;
-        }
-
-        /* --- VENUE CARD --- */
-        .venue-card {
-            width: 100%;
-            max-width: 320px;
-            background: #fdfaf4;
-            margin: 20px auto;
-            border-radius: 12px;
-            padding: 30px 20px;
-            border: 1px solid #ebdcb9;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-        }
-
-        .map-icon-svg {
-            width: 40px;
-            height: 40px;
-            fill: var(--text-maroon);
-            margin-bottom: 12px;
-        }
-
-        .map-btn {
-            display: inline-block;
-            margin-top: 20px;
-            background: var(--text-maroon);
-            color: #fff;
-            padding: 11px 28px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(130,41,49,0.25);
-        }
-
-        .footer-names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--text-maroon);
-            margin-top: 30px;
-        }
-
-        .hashtag {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="envelope-screen">
-        <div class="envelope" onclick="unlockInvitation()">
-            <div class="wax-seal">
-                <div class="wax-seal-inner">S & T</div>
-            </div>
-        </div>
-        <h1 class="landing-title">You're Invited</h1>
-        <p class="landing-subtitle">Tap seal to open card</p>
-    </div>
-
-    <main class="main-invitation" id="mainInviteContainer">
-        
-        <section class="invite-section royal-frame">
-            <svg class="ganesha-svg" viewBox="0 0 24 24">
-                <path d="M12,2A2,2 0 0,0 10,4C10,4.75 10.4,5.42 11,5.77V7.23C9.31,7.63 8,9.16 8,11V13H7A2,2 0 0,0 5,15V17A2,2 0 0,0 7,19H8V20A2,2 0 0,0 10,22H14A2,2 0 0,0 16,20V19H17A2,2 0 0,0 19,17V15A2,2 0 0,0 17,13H16V11C16,9.16 14.69,7.63 13,7.23V5.77C13.6,5.42 14,4.75 14,4A2,2 0 0,0 12,2M10,11H14V13H10V11Z" />
-            </svg>
-            <div class="mantra">|| Shree Ganeshay Namah ||</div>
-            <p class="invitation-line">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
-            
-            <h1 class="cursive-name">Saurav</h1>
-            <div class="with-text">with</div>
-            <h1 class="cursive-name">Tannu</h1>
-
-            <div class="parents-info">
-                <strong>S/o</strong> Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh <br>
-                <div style="margin: 5px 0; font-family:'Great Vibes', cursive; font-size: 1.4rem; color: var(--gold-dark);">and</div>
-                <strong>D/o</strong> Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
-            </div>
-        </section>
-
-        <section class="invite-section" style="background-color: #fdfaf4; border-top: 1px solid #ebdcb9; border-bottom: 1px solid #ebdcb9;">
-            <h2 class="save-the-date-title">Save the Date</h2>
-            <div class="date-display">24th June 2026</div>
-
-            <div class="countdown-box" id="timer">
-                <div class="countdown-item" id="days">00<span>Days</span></div>
-                <div class="countdown-divider">:</div>
-                <div class="countdown-item" id="hours">00<span>Hrs</span></div>
-                <div class="countdown-divider">:</div>
-                <div class="countdown-item" id="mins">00<span>Min</span></div>
-                <div class="countdown-divider">:</div>
-                <div class="countdown-item" id="secs">00<span>Sec</span></div>
-            </div>
-
-            <h2 class="section-header-cursive" style="margin-top: 30px;">Events Schedule</h2>
-            <p class="invitation-line" style="font-weight:600; color: var(--text-maroon);">Wedding & Reception Ceremony:<br>6:30 PM Onwards</p>
-        </section>
-
-        <section class="invite-section">
-            <h2 class="section-header-cursive">Where We Celebrate</h2>
-            <p class="invitation-line" style="font-weight: 500;">Fulai Garden, Zirapwadi, Phaltan, Satara, Maharashtra</p>
-            
-            <div class="venue-card">
-                <svg class="map-icon-svg" viewBox="0 0 24 24">
-                    <path d="M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5Z" />
-                </svg>
-                <p style="font-size: 0.85rem; font-weight:600; color:#222;">Fulai Garden Hall, Satara</p>
-                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Satara" target="_blank" class="map-btn">Open In Google Maps</a>
-            </div>
-
-            <div class="footer-names">Saurav & Tannu</div>
-            <div class="hashtag">#SAURAVANDTANNU</div>
-        </section>
-    </main>
-
-    <script>
-        function unlockInvitation() {
-            document.getElementById('envelope-screen').classList.add('opened');
-            document.getElementById('mainInviteContainer').style.display = 'block';
-        }
-
-        // Target Date Countdown Timer Logic
-        const targetedDate = new Date("Jun 24, 2026 18:30:00").getTime();
-
-        const counter = setInterval(() => {
-            const now = new Date().getTime();
-            const difference = targetedDate - now;
-
-            if (difference <= 0) {
-                clearInterval(counter);
-                document.getElementById('timer').innerHTML = "<div style='color:white; font-weight:600;'>The Celebration Has Begun!</div>";
-                return;
-            }
-
-            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById('days').childNodes[0].textContent = d < 10 ? '0' + d : d;
-            document.getElementById('hours').childNodes[0].textContent = h < 10 ? '0' + h : h;
-            document.getElementById('mins').childNodes[0].textContent = m < 10 ? '0' + m : m;
-            document.getElementById('secs').childNodes[0].textContent = s < 10 ? '0' + s : s;
-        }, 1000);
-    </script>
-</body>
-</html>
