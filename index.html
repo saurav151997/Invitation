@@ -2,500 +2,276 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Saurav & Tannu's Wedding Invitation ✨</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav & Tannu's Wedding Invitation</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
-
-        :root {
-            --sage-bg: #9eb39f;        
-            --gold: #d4af37;
-            --gold-dark: #b18c39;
-            --cream-bg: #faf6ee;       
-            --text-maroon: #822931;    
-            --text-dark: #3a3a3a;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        /* CSS resets for clean layout */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream-bg);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* --- FALLING PETALS ANIMATION --- */
-        #petal-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none; 
-            z-index: 9999;
-            overflow: hidden;
-        }
-
-        .petal {
-            position: absolute;
-            background: radial-gradient(circle at 30% 30%, #ffd1d8, #ffb6c1);
-            border-radius: 50% 0 50% 50%; 
-            opacity: 0.7;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            animation: fall linear infinite, sway ease-in-out infinite alternate;
-        }
-
-        @keyframes fall {
-            0% { top: -10%; opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { top: 110%; opacity: 0; }
-        }
-
-        @keyframes sway {
-            0% { transform: translateX(0px) rotate(0deg); }
-            100% { transform: translateX(35px) rotate(85deg); }
-        }
-
-        /* --- SCREEN 1: ENVELOPE LANDING --- */
-        #envelope-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--sage-bg);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
-        }
-
-        #envelope-screen.opened {
-            transform: translateY(-100vh);
-            pointer-events: none;
-        }
-
-        .envelope {
-            position: relative;
-            width: 310px;
-            height: 210px;
-            background-color: #f7f1e6;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,55 L100,0 Z' fill='%23efeadb' stroke='%23d4af37' stroke-width='0.5'/%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .wax-seal {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, #f5d376 0%, #ca9b2c 70%, #9a7217 100%);
-            border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #b88d21;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        .wax-seal-inner {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            color: #fff;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .landing-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: #2b3d27;
-            margin-top: 35px;
-        }
-
-        .landing-subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #435c3e;
-            margin-top: 5px;
-        }
-
-        /* --- SCREEN 2: MAIN INVITATION CARD (ROUNDED CORNERS) --- */
-        .main-invitation {
-            max-width: 450px;
-            margin: 25px auto;
-            background-color: #fffaf2;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-            min-height: calc(100vh - 50px);
-            display: none;
-            border-radius: 24px; /* Beautiful softly rounded corners */
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Exact custom floral background wrapper */
-        .floral-hero-bg {
-            background-image: url('https://i.postimg.cc/xdkDRgvd/Pink-Flower-Minimalist-Engagement-Invitation.png');
+            /* Surround wood desk background */
+            background-color: #f2f0ea;
+            background-image: url('desk-background.jpg'); /* Replace with your desired wood background image */
             background-size: cover;
             background-position: center;
+            font-family: 'Playfair Display', serif; /* Preserve serif font style */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            /* Designed paper tile on the device screen */
+            background-color: #fffaf0; /* Ivory paper texture */
             width: 100%;
-            padding: 50px 25px 40px 25px;
-            text-align: center;
+            max-width: 460px; /* Standard phone width */
+            border-radius: 20px; /* Softly rounded card frame */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
+            /* Integrated botanical borders */
+            border: 15px solid transparent;
+            border-image: url('botanical-borders.png') 30 stretch; /* Cohesive watercolor border from image_41.png */
         }
 
-        /* Soft overlay tint beneath the text to preserve contrast over flowers */
-        .floral-hero-bg::before {
-            content: '';
+        /* Drifting petals animation over the container */
+        .invitation-card::before {
+            content: "";
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(255, 250, 242, 0.15);
-            z-index: 1;
+            top: -20px; left: 0; right: 0; bottom: -20px;
+            background: url('drifting-petals.png'); /* Drifting pink flower petals */
+            pointer-events: none;
+            z-index: 5;
+            animation: driftingPetals 10s linear infinite;
         }
 
-        .hero-content-node {
+        @keyframes driftingPetals {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 1000px; }
+        }
+
+        .section {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .invite-section {
-            position: relative;
-            padding: 40px 25px;
-            text-align: center;
-            background-color: #fffaf2;
-        }
-
-        .ganesha-wrapper {
-            margin-bottom: 5px;
+        .ganesha-header {
+            margin-top: 10px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        .ganesha-img {
-            width: 130px;
+        .ganesha-image {
+            width: 90px;
             height: auto;
-            display: block;
-            margin: 0 auto;
+            margin-bottom: 8px;
         }
 
-        .mantra {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-maroon);
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            margin-top: 5px;
-        }
-
-        .invitation-line {
-            font-size: 0.88rem;
-            line-height: 1.8;
-            color: #444;
-            max-width: 320px;
-            margin: 15px auto;
+        .namah-text {
+            color: #822931; /* Preserve maroon/brown color */
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-top: 10px;
             font-weight: 500;
         }
 
-        .cursive-name {
+        .intro-text {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 80%;
+            margin: 15px 0 25px;
+        }
+
+        .names-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin: 15px 0 25px;
+            width: 90%;
+            border: 2px solid transparent;
+            border-image: url('botanical-borders-inner.png') 30 stretch;
+        }
+
+        .name {
+            color: #822931; /* Preserve large maroon cursive font */
             font-family: 'Great Vibes', cursive;
             font-size: 5rem;
-            color: var(--text-maroon);
-            line-height: 1.1;
-            margin: 5px 0;
-            font-weight: normal;
+            line-height: 1;
+            font-weight: 400;
         }
 
         .with-text {
+            color: #cda231; /* Preserve smaller gold recursive script */
             font-family: 'Great Vibes', cursive;
-            font-size: 2.4rem;
-            color: var(--gold-dark);
-            margin: -2px 0;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            font-weight: 400;
         }
 
-        .parents-info {
-            font-size: 0.85rem;
-            color: #555;
-            line-height: 1.8;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px dashed #e4d8be;
+        .separator-dashed {
+            width: 90%;
+            height: 1px;
+            border-top: 1px dashed #eadecc;
+            margin: 20px 0;
+        }
+
+        .parent-names {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+            margin: 5px 0;
+            text-transform: capitalize;
             font-weight: 500;
         }
 
-        /* --- REVEAL LIVE COUNTDOWN CARD --- */
-        .countdown-container {
-            background: #ebdcb9;
-            border-radius: 14px;
-            padding: 12px 18px;
-            margin: 15px auto 35px auto;
-            max-width: 360px;
-            border: 2px solid var(--gold);
-            color: var(--text-dark);
+        .details-bar {
+            width: 100%;
+            background: linear-gradient(to bottom, #ebdcb9, #fff); /* Structured Events Tile */
+            padding: 20px 15px;
+            border-radius: 10px;
+            margin-top: 25px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 8px rgba(212,175,55,0.1);
         }
 
-        .save-the-date-title {
+        .events-text {
+            color: #822931;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            color: var(--text-dark);
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 1.1rem;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        .countdown-box {
-            display: flex;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-maroon);
-        }
-
-        .countdown-item {
-            background: #fdfbf7;
-            padding: 4px 6px;
-            border-radius: 6px;
-            border: 1px solid var(--gold);
-            min-width: 45px;
+        .event-tile {
+            width: 90%;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #fdfaf4;
+            margin: 15px 0 25px;
+            border: 1px solid transparent;
+            border-image: url('botanical-borders-inner.png') 20 stretch;
         }
 
-        .countdown-item span {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            margin-top: 2px;
-            font-weight: 600;
-            color: #777;
-        }
-
-        .section-header-cursive {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: var(--text-maroon);
-            margin: 15px 0 10px 0;
-        }
-
-        /* --- VENUE CARD SYSTEM --- */
-        .venue-card {
+        .bottom-tiles {
             width: 100%;
-            background: #fff;
-            margin: 20px auto;
-            border-radius: 14px;
-            padding: 25px 20px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0 35px;
+            flex-wrap: wrap;
         }
 
-        .map-btn {
-            display: inline-block;
-            margin-top: 18px;
-            background: var(--text-maroon);
-            color: #fff;
-            padding: 12px 35px;
+        .interactive-tile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
             border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            background-color: #fff;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
             text-decoration: none;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(110, 28, 36, 0.25);
+            color: #333;
             transition: transform 0.2s;
         }
 
-        .map-btn:active {
-            transform: scale(0.96);
+        .interactive-tile:hover {
+            transform: scale(1.03);
         }
 
-        .footer-names {
+        .tile-icon {
+            width: 20px;
+            height: auto;
+        }
+
+        .recursive-script-header {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: var(--text-maroon);
-            margin-top: 35px;
+            color: #822931;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            font-weight: 400;
         }
 
-        .hashtag {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: #888;
-            margin-top: 6px;
-            font-weight: 600;
+        .structured-details {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+            font-weight: 500;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+    <div class="invitation-card">
+        
+        <div class="section ganesha-header">
+            <img src="ganesha-sitting.png" alt="Baby Ganesha sitting on lotus" class="ganesha-image">
+            <div class="namah-text">|| Shree Ganeshay Namah ||</div>
+        </div>
 
-    <div id="petal-container"></div>
+        <div class="section intro-text">
+            We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...
+        </div>
 
-    <div id="envelope-screen">
-        <div class="envelope" onclick="unlockInvitation()">
-            <div class="wax-seal">
-                <div class="wax-seal-inner">S & T</div>
+        <div class="names-container">
+            <div class="name">Saurav</div>
+            <div class="with-text">with</div>
+            <div class="name">Tannu</div>
+        </div>
+
+        <div class="separator-dashed"></div>
+        <div class="section">
+            <div class="parent-names">S/o Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh</div>
+            <div class="with-text" style="font-size: 1.5rem; margin: 10px 0; color: #cda231;">and</div>
+            <div class="parent-names">D/o Mr. Dasharath Yadav & Mrs. Ujjwala Yadav</div>
+        </div>
+
+        <div class="details-bar">
+            <div class="events-text">Save the Date | 24th June 2026</div>
+        </div>
+
+        <div class="event-tile">
+            <div class="recursive-script-header">Location</div>
+            <div class="structured-details">
+                <img src="location-pin.png" alt="Location pin icon" style="width:16px; margin-right:5px; vertical-align:middle;">
+                Fulai Garden Hall, Satara
             </div>
         </div>
-        <h1 class="landing-title">You're Invited</h1>
-        <p class="landing-subtitle">Tap envelope to view invitation</p>
+
+        <div class="bottom-tiles">
+            <a href="#" class="interactive-tile">
+                <img src="map-pin.png" alt="Map pin icon" class="tile-icon">
+                View on Map
+            </a>
+            <a href="#" class="interactive-tile">
+                <img src="shared-icons.png" alt="Shared social media icons" class="tile-icon">
+                Shared
+            </a>
+        </div>
+        
     </div>
 
-    <main class="main-invitation" id="mainInviteContainer">
-        
-        <section class="floral-hero-bg">
-            <div class="hero-content-node">
-                <div class="ganesha-wrapper">
-                    <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" alt="Shree Ganesha Asset">
-                </div>
-                
-                <div class="mantra">|| Shree Ganeshay Namah ||</div>
-                <p class="invitation-line" style="color: #222;">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
-                
-                <h1 class="cursive-name">Saurav</h1>
-                <div class="with-text">with</div>
-                <h1 class="cursive-name">Tannu</h1>
-            </div>
-        </section>
-
-        <section class="invite-section" style="padding-top: 10px;">
-            <div class="parents-info" style="border-top: none; margin-top: 0; padding-top: 0;">
-                <strong>S/o</strong> Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh
-                <div class="with-text" style="font-size: 1.6rem; margin: 10px 0;">and</div>
-                <strong>D/o</strong> Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
-            </div>
-
-            <div class="countdown-container">
-                <span class="save-the-date-title">24th June 2026</span>
-                
-                <div class="countdown-box" id="timer">
-                    <div class="countdown-item" id="days">00<span>Days</span></div>
-                    <div class="countdown-item" id="hours">00<span>Hrs</span></div>
-                    <div class="countdown-item" id="mins">00<span>Min</span></div>
-                </div>
-            </div>
-
-            <h2 class="section-header-cursive">Events Schedule</h2>
-            <p class="invitation-line" style="font-weight:600; color: var(--text-dark); margin-top: 5px;">
-                Wedding & Reception Ceremony:<br>6:30 PM Onwards
-            </p>
-        </section>
-
-        <section class="invite-section" style="background-color: #fffdf9;">
-            <h2 class="section-header-cursive">Where We Celebrate</h2>
-            
-            <div class="venue-card">
-                <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">Fulai Garden Hall</p>
-                <p style="font-size: 0.85rem; color: #555; line-height: 1.6;">Zirapwadi, Phaltan, Satara, Maharashtra</p>
-                
-                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Phaltan+Satara" target="_blank" class="map-btn">Open Map</a>
-            </div>
-
-            <div style="margin-top: 40px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; color: #888;">WITH LOVE</div>
-            <div class="footer-names">Saurav & Tannu</div>
-            <div class="hashtag">#SAURAVANDTANNU</div>
-        </section>
-    </main>
-
-    <script>
-        function unlockInvitation() {
-            document.getElementById('envelope-screen').classList.add('opened');
-            document.getElementById('mainInviteContainer').style.display = 'block';
-            setTimeout(generateFlowerPetals, 400);
-        }
-
-        function generateFlowerPetals() {
-            const rootContainer = document.getElementById('petal-container');
-            if(!rootContainer) return;
-            const totalPetalsCount = 25; 
-
-            for (let i = 0; i < totalPetalsCount; i++) {
-                let singlePetal = document.createElement('div');
-                singlePetal.classList.add('petal');
-                
-                let positionLeft = Math.random() * 100;        
-                let variableScale = Math.random() * 12 + 10;   
-                let downwardSpeed = Math.random() * 5 + 6;     
-                let swaySpeed = Math.random() * 3 + 2.5;       
-                let timelineDelay = Math.random() * 6;         
-
-                singlePetal.style.left = `${positionLeft}vw`;
-                singlePetal.style.width = `${variableScale}px`;
-                singlePetal.style.height = `${variableScale}px`;
-                singlePetal.style.animationDuration = `${downwardSpeed}s, ${swaySpeed}s`;
-                singlePetal.style.animationDelay = `${timelineDelay}s, ${timelineDelay}s`;
-
-                rootContainer.appendChild(singlePetal);
-            }
-        }
-
-        // Live Dynamic Countdown Logic Configuration
-        const targetEventTimestamp = new Date(2026, 5, 24, 18, 30, 0).getTime(); 
-
-        const countdownProcessor = setInterval(() => {
-            const currentSystemTime = new Date().getTime();
-            const distanceRemaining = targetEventTimestamp - currentSystemTime;
-
-            const timerContainer = document.getElementById('timer');
-            if(!timerContainer) return;
-
-            if (distanceRemaining <= 0) {
-                clearInterval(countdownProcessor);
-                timerContainer.innerHTML = "<div style='font-size:0.75rem; font-weight:700; color:var(--text-maroon); letter-spacing:1px;'>CELEBRATION STARTED!</div>";
-                return;
-            }
-
-            const calculationDays = Math.floor(distanceRemaining / (1000 * 60 * 60 * 24));
-            const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
-
-            const dEl = document.getElementById('days');
-            const hEl = document.getElementById('hours');
-            const mEl = document.getElementById('mins');
-
-            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
-            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
-            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
-            
-        }, 1000);
-    </script>
 </body>
 </html>
