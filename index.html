@@ -6,7 +6,7 @@
     <title>Saurav & Tannu's Wedding Invitation ✨</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght=0,400;0,600;1,400&family=Montserrat:wght=300;400;500;600&display=swap');
 
         :root {
             --sage-bg: #9eb39f;        
@@ -175,6 +175,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 140px;
         }
 
         .ganesha-img {
@@ -408,7 +409,7 @@
         
         <section class="invite-section">
             <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="https://img.icons8.com/color/144/ganesha.png" alt="Shree Ganesha Header Icon">
+                <img class="ganesha-img" src="ganesha.png" alt="Shree Ganesha Header Icon">
             </div>
             
             <div class="mantra">|| Shree Ganeshay Namah ||</div>
@@ -473,16 +474,13 @@
             
             if (!mainContainer || !envelopeScreen) return;
 
-            // Force layout block instantly so elements are given widths/heights
             mainContainer.style.display = 'block';
             envelopeScreen.classList.add('opened');
             
-            // Unbind layout obstruction after CSS transform animations finish natively
             setTimeout(() => {
                 envelopeScreen.style.display = 'none';
             }, 800);
 
-            // Trigger animations
             generateFlowerPetals();
             initScratchCard(); 
         }
@@ -512,21 +510,21 @@
             }
         }
 
-        /* --- INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
+        /* --- SAFE INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
         function initScratchCard() {
             const canvas = document.getElementById('scratch-canvas');
             if (!canvas) return;
-            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const ctx = canvas.getContext('2d');
             
             const wrapper = canvas.parentNode;
             canvas.width = wrapper.clientWidth || 340;
             canvas.height = wrapper.clientHeight || 160;
 
-            // Base coating
+            // Paint stable solid fill canvas top coating color block
             ctx.fillStyle = '#dfab41';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Texture
+            // Textures
             ctx.fillStyle = '#b8851c';
             for (let i = 0; i < canvas.width; i += 15) {
                 for (let j = 0; j < canvas.height; j += 15) {
@@ -534,7 +532,7 @@
                 }
             }
 
-            // Text string instruction label
+            // Overlay prompt
             ctx.fillStyle = '#ffffff';
             ctx.font = 'bold 16px Montserrat, sans-serif';
             ctx.textAlign = 'center';
@@ -568,31 +566,17 @@
                 ctx.beginPath();
                 ctx.arc(coords.x, coords.y, 24, 0, Math.PI * 2);
                 ctx.fill();
-                
-                checkScratchPercentage();
             }
 
             function scratchEnd() {
-                isDrawing = false;
-            }
-
-            function checkScratchPercentage() {
-                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const pixels = imgData.data;
-                let clearedPixels = 0;
-
-                for (let i = 3; i < pixels.length; i += 32) {
-                    if (pixels[i] === 0) clearedPixels++;
-                }
-
-                const totalSamplePixels = pixels.length / 32;
-                if ((clearedPixels / totalSamplePixels) > 0.35) {
-                    canvas.style.opacity = '0';
-                    canvas.style.pointerEvents = 'none';
+                if (isDrawing) {
+                    isDrawing = false;
+                    // Simple gesture tracking triggers immediate fallback auto-clearing to prevent crashes
                     setTimeout(() => {
-                        canvas.remove();
+                        canvas.style.opacity = '0';
+                        canvas.style.pointerEvents = 'none';
                         triggerConfettiShower();
-                    }, 400);
+                    }, 1200);
                 }
             }
 
@@ -665,7 +649,7 @@
             runConfettiLoop();
         }
 
-        // Countdown Target Configured for June 24, 2026
+        // Live Event Target Timer Configuration
         const targetEventTimestamp = new Date(2026, 5, 24, 10, 30, 0).getTime(); 
 
         const countdownProcessor = setInterval(() => {
