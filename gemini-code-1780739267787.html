@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Saurav & Tannu's Wedding Invitation ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
+
+        :root {
+            --sage: #b9c7b1;
+            --gold: #d4af37;
+            --dark-gold: #b38f2d;
+            --cream: #fffcf7;
+            --maroon: #801818;
+            --text-dark: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4eee1;
+            overflow-x: hidden;
+            color: var(--text-dark);
+        }
+
+        /* --- SCREEN 1: ENVELOPE LANDING --- */
+        #envelope-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--sage);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #envelope-screen.opened {
+            transform: translateY(-100vh);
+        }
+
+        /* Lace/Mandala Patterned Envelope Outer Shell */
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: #eadecc;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* SVG Background representing the lace cutout look */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23dfd2bd' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        /* Envelope Flap Overlay */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,65 L100,0 Z' fill='%23f1e6d5' stroke='%23d4af37' stroke-width='0.5' fill-opacity='0.95'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Realistic Wax Seal Button */
+        .wax-seal {
+            position: relative;
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #f3cd65 0%, #c49727 70%, #916c16 100%);
+            border-radius: 50%;
+            z-index: 2;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #b08722;
+            animation: pulse 2s infinite;
+            transform: scale(1);
+            transition: transform 0.2s;
+        }
+
+        .wax-seal:active {
+            transform: scale(0.92);
+        }
+
+        .wax-seal-inner {
+            width: 58px;
+            height: 58px;
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+
+        .landing-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            color: #3e5239;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .landing-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #556b50;
+            margin-top: 5px;
+        }
+
+        /* --- SCREEN 2: SCROLLING INVITATION --- */
+        .main-invitation {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: var(--cream);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            display: none;
+        }
+
+        /* Shared Card Structure */
+        .invite-section {
+            position: relative;
+            padding: 50px 25px;
+            text-align: center;
+            background-color: var(--cream);
+            overflow: hidden;
+            border-bottom: 8px double #eadecc;
+        }
+
+        /* Traditional Indian Floral Borders */
+        .floral-bg {
+            background-image: 
+                url('https://i.imgur.com/W7SgYF3.png'), /* Soft Corner Leaves placeholder style */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16z' fill='%23f1e6d5' fill-opacity='0.4'/%3E%3C/svg%3E");
+            background-position: top center;
+            background-size: contain;
+        }
+
+        /* Typography Styling matching images */
+        .ganesha-icon {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .mantra {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--maroon);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .invitation-line {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #666;
+            margin: 15px 0;
+            padding: 0 10px;
+        }
+
+        .cursive-name {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 4.5rem;
+            color: var(--maroon);
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .with-text {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: -5px 0;
+        }
+
+        .parents-info {
+            font-size: 0.75rem;
+            color: #777;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        /* --- DATE & COUNTDOWN TILE --- */
+        .save-the-date-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.2rem;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .date-display {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        /* Countdown Container Box Matching the Image Widget */
+        .countdown-box {
+            background: linear-gradient(135deg, #e4a843 0%, #c28621 100%);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(194, 134, 33, 0.3);
+            max-width: 300px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .countdown-item {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .countdown-item span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 2px;
+            font-weight: normal;
+        }
+
+        .countdown-divider {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: rgba(255,255,255,0.6);
+            padding-bottom: 15px;
+        }
+
+        .section-header-cursive {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3rem;
+            color: var(--maroon);
+            margin-bottom: 15px;
+        }
+
+        /* --- SCRATCH MAP AREA --- */
+        .scratch-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #fff;
+        }
+
+        /* The hidden map beneath */
+        .map-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #eee;
+            z-index: 1;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Interactive Canvas Layer */
+        .scratch-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .scratch-hint {
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            animation: bounce 2s infinite;
+            margin-top: 5px;
+        }
+
+        /* Footer Info */
+        .footer-names {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.2rem;
+            color: var(--maroon);
+            margin-top: 20px;
+        }
+
+        .hashtag {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Background audio hidden */
+        #bg-audio { display: none; }
+
+        /* --- KEYFRAMES --- */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.06); box-shadow: 0 6px 22px rgba(212,175,55,0.6); }
+            100% { transform: scale(1); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-audio" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="envelope-screen">
+        <div class="envelope" onclick="unlockInvitation()">
+            <div class="wax-seal">
+                <div class="wax-seal-inner">S & T</div>
+            </div>
+        </div>
+        <h1 class="landing-title">You're Invited</h1>
+        <p class="landing-subtitle">Tap envelope to open</p>
+    </div>
+
+    <main class="main-invitation" id="mainInviteContainer">
+        
+        <section class="invite-section floral-bg">
+            <svg class="ganesha-icon" viewBox="0 0 50 50" fill="currentColor" color="#801818">
+                <path d="M25 5C17 5 15 10 15 15C15 22 21 24 21 28C21 32 18 34 16 34C15 34 14 35 14 36C14 38 20 45 25 45C30 45 36 38 36 36C36 35 35 34 34 34C32 34 29 32 29 28C29 24 35 22 35 15C35 10 33 5 25 5Z"/>
+            </svg>
+            <div class="mantra">|| Shree Ganeshay Namah ||</div>
+            <p class="invitation-line">We cordially invite you to witness the beginning of our love story and celebrate the wedding ceremony of...</p>
+            
+            <h1 class="cursive-name">Saurav</h1>
+            <div class="with-text">with</div>
+            <h1 class="cursive-name">Tannu</h1>
+
+            <div class="parents-info">
+                <strong>S/o</strong> Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh <br>
+                <div style="margin: 5px 0;">&amp;</div>
+                <strong>D/o</strong> Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
+            </div>
+        </section>
+
+        <section class="invite-section" style="background-color: #fff9ed;">
+            <h2 class="save-the-date-title">Save the Date</h2>
+            <div class="date-display">24th June 2026</div>
+
+            <div class="countdown-box" id="timer">
+                <div class="countdown-item" id="days">00<span>Days</span></div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item" id="hours">00<span>Hrs</span></div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item" id="mins">00<span>Min</span></div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item" id="secs">00<span>Sec</span></div>
+            </div>
+
+            <div class="section-header-cursive" style="margin-top: 40px;">Events Schedule</div>
+            <p class="invitation-line" style="font-size:0.85rem; font-weight:500;">Maneuver Ceremony &amp; Reception: 6:30 PM Onwards</p>
+        </section>
+
+        <section class="invite-section">
+            <h2 class="section-header-cursive">Where We Celebrate</h2>
+            <p class="invitation-line" style="margin-bottom: 5px;">Fulai Garden Hall, Zirapwadi, Satara, Maharashtra</p>
+            
+            <div class="scratch-wrapper">
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=Satara,%20Maharashtra&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                </div>
+                <canvas class="scratch-canvas" id="scratchCardCanvas"></canvas>
+            </div>
+            <div class="scratch-hint">👇 Scratch card with finger to reveal map!</div>
+
+            <div class="footer-names">Saurav &amp; Tannu</div>
+            <div class="hashtag">#SAURAVANDTANNU</div>
+        </section>
+    </main>
+
+    <script>
+        // 1. OPEN CARD & TRICKLE MUSIC SYSTEM
+        function unlockInvitation() {
+            document.getElementById('envelope-screen').classList.add('opened');
+            document.getElementById('mainInviteContainer').style.display = 'block';
+            
+            // Audio engine triggers smoothly on mobile action sequence
+            const song = document.getElementById('bg-audio');
+            song.play().catch(() => {
+                console.log("Audio auto-block override handled successfully.");
+            });
+
+            // Initialize Scratch element canvas cleanly post layout loading
+            setTimeout(setupScratchCard, 400);
+        }
+
+        // 2. LIVE REALTIME COUNTDOWN SYSTEM 
+        const targetedDate = new Date("Jun 24, 2026 18:30:00").getTime();
+
+        const counter = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetedDate - now;
+
+            if (difference <= 0) {
+                clearInterval(counter);
+                document.getElementById('timer').innerHTML = "<div style='color:white; font-weight:bold;'>The Wedding Celebration Has Begun!</div>";
+                return;
+            }
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').childNodes[0].textContent = d < 10 ? '0' + d : d;
+            document.getElementById('hours').childNodes[0].textContent = h < 10 ? '0' + h : h;
+            document.getElementById('mins').childNodes[0].textContent = m < 10 ? '0' + m : m;
+            document.getElementById('secs').childNodes[0].textContent = s < 10 ? '0' + s : s;
+        }, 1000);
+
+        // 3. CANVAS SCRATCH CARD FOIL CONTEXT SETUP
+        function setupScratchCard() {
+            const canvas = document.getElementById('scratchCardCanvas');
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            // Creating the ornate golden gradient texture layer
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#e4a843');
+            gradient.addColorStop(0.5, '#c28621');
+            gradient.addColorStop(1, '#f9d99a');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Adding text callouts inside the scratch overlay canvas area
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '600 13px Montserrat';
+            ctx.textAlign = 'center';
+            ctx.fillText('🎁 REVEAL SECRET LOCATION', canvas.width / 2, canvas.height / 2 - 5);
+            ctx.font = '500 10px Montserrat';
+            ctx.fillStyle = 'rgba(255,255,255,0.8)';
+            ctx.fillText('Scratch here to clear gold foil', canvas.width / 2, canvas.height / 2 + 15);
+
+            // Universal movement execution handler tracking coordinates
+            function performScratch(e) {
+                if (!isDrawing) return;
+
+                const bounds = canvas.getBoundingClientRect();
+                // Normalize pointer locations across mobile touch structures vs desktop mouse
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const posX = clientX - bounds.left;
+                const posY = clientY - bounds.top;
+
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(posX, posY, 24, 0, Math.PI * 2); // Dynamic erase bubble sizing radius
+                ctx.fill();
+            }
+
+            // Input listener assignments mapped comprehensively
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('touchstart', () => isDrawing = true);
+            
+            canvas.addEventListener('mousemove', performScratch);
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault(); // Lock mobile screen scrolling securely while scratching canvas content area
+                performScratch(e);
+            });
+
+            window.addEventListener('mouseup', () => isDrawing = false);
+            window.addEventListener('touchend', () => isDrawing = false);
+        }
+    </script>
+</body>
+</html>
