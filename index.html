@@ -12,7 +12,6 @@
             --sage-bg: #9eb39f;        
             --gold: #d4af37;
             --gold-dark: #b18c39;
-            --gold-gradient: linear-gradient(135deg, #dfab41 0%, #b8851c 100%);
             --cream-bg: #faf6ee;       
             --text-maroon: #822931;    
             --text-dark: #3a3a3a;
@@ -151,22 +150,49 @@
             margin-top: 5px;
         }
 
-        /* --- SCREEN 2: MAIN SCROLLING INVITATION --- */
+        /* --- SCREEN 2: MAIN INVITATION CARD (ROUNDED CORNERS) --- */
         .main-invitation {
-            max-width: 460px;
-            margin: 0 auto;
-            background-color: var(--cream-bg);
-            box-shadow: 0 0 30px rgba(0,0,0,0.08);
-            min-height: 100vh;
+            max-width: 450px;
+            margin: 25px auto;
+            background-color: #fffaf2;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            min-height: calc(100vh - 50px);
             display: none;
-            background-image: radial-gradient(circle at top right, rgba(255,220,224,0.12), transparent 45%),
-                              radial-gradient(circle at bottom left, rgba(158,179,159,0.12), transparent 45%);
+            border-radius: 24px; /* Beautiful softly rounded corners */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Exact custom floral background wrapper */
+        .floral-hero-bg {
+            background-image: url('https://i.postimg.cc/xdkDRgvd/Pink-Flower-Minimalist-Engagement-Invitation.png');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            padding: 50px 25px 40px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Soft overlay tint beneath the text to preserve contrast over flowers */
+        .floral-hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 250, 242, 0.15);
+            z-index: 1;
+        }
+
+        .hero-content-node {
+            position: relative;
+            z-index: 2;
         }
 
         .invite-section {
             position: relative;
-            padding: 45px 25px;
+            padding: 40px 25px;
             text-align: center;
+            background-color: #fffaf2;
         }
 
         .ganesha-wrapper {
@@ -177,7 +203,7 @@
         }
 
         .ganesha-img {
-            width: 140px;
+            width: 130px;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -187,81 +213,85 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
             color: var(--text-maroon);
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2px;
             margin-bottom: 25px;
             margin-top: 5px;
         }
 
         .invitation-line {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             line-height: 1.8;
             color: #444;
             max-width: 320px;
             margin: 15px auto;
+            font-weight: 500;
         }
 
         .cursive-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 4.8rem;
+            font-size: 5rem;
             color: var(--text-maroon);
             line-height: 1.1;
-            margin: 10px 0;
+            margin: 5px 0;
             font-weight: normal;
         }
 
         .with-text {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: var(--gold-dark);
-            margin: -5px 0;
+            margin: -2px 0;
         }
 
         .parents-info {
-            font-size: 0.8rem;
-            color: #777;
-            line-height: 1.6;
-            margin-top: 25px;
-            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.8;
+            margin-top: 30px;
+            padding-top: 25px;
             border-top: 1px dashed #e4d8be;
             font-weight: 500;
         }
 
-        /* --- COUNTDOWN BOX --- */
+        /* --- REVEAL LIVE COUNTDOWN CARD --- */
         .countdown-container {
             background: #ebdcb9;
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin: 30px auto;
-            max-width: 350px;
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin: 15px auto 35px auto;
+            max-width: 360px;
             border: 2px solid var(--gold);
             color: var(--text-dark);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
         }
 
         .save-the-date-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
             color: var(--text-dark);
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .countdown-box {
             display: flex;
-            gap: 5px;
-            font-size: 0.75rem;
-            font-weight: bold;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--text-maroon);
         }
 
         .countdown-item {
-            background: #f7f1e3;
-            padding: 2px 4px;
-            border-radius: 3px;
+            background: #fdfbf7;
+            padding: 4px 6px;
+            border-radius: 6px;
             border: 1px solid var(--gold);
-            min-width: 42px;
+            min-width: 45px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -271,27 +301,27 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.55rem;
             text-transform: uppercase;
-            margin-top: 1px;
-            font-weight: 500;
-            color: var(--text-maroon);
+            margin-top: 2px;
+            font-weight: 600;
+            color: #777;
         }
 
         .section-header-cursive {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--text-maroon);
-            margin: 25px 0 10px 0;
+            margin: 15px 0 10px 0;
         }
 
-        /* --- VENUE BOX CARD --- */
+        /* --- VENUE CARD SYSTEM --- */
         .venue-card {
             width: 100%;
             background: #fff;
             margin: 20px auto;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 25px 20px;
             border: 1px solid rgba(212, 175, 55, 0.25);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
         }
 
         .map-btn {
@@ -299,7 +329,7 @@
             margin-top: 18px;
             background: var(--text-maroon);
             color: #fff;
-            padding: 12px 32px;
+            padding: 12px 35px;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -316,21 +346,17 @@
 
         .footer-names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--text-maroon);
             margin-top: 35px;
         }
 
         .hashtag {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             color: #888;
-            margin-top: 5px;
+            margin-top: 6px;
             font-weight: 600;
-        }
-
-        @pragma {
-            content: "clean-render";
         }
 
         @keyframes pulse {
@@ -355,28 +381,30 @@
 
     <main class="main-invitation" id="mainInviteContainer">
         
-        <section class="invite-section">
-            <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" alt="Shree Ganesha Header Asset">
-            </div>
-            
-            <div class="mantra">|| Shree Ganeshay Namah ||</div>
-            <p class="invitation-line">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
-            
-            <h1 class="cursive-name">Saurav</h1>
-            <div class="with-text">with</div>
-            <h1 class="cursive-name">Tannu</h1>
-            
-            <div class="parents-info">
-                S/o Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh
-                <div class="with-text" style="font-size: 1.5rem; margin: 15px 0;">and</div>
-                D/o Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
+        <section class="floral-hero-bg">
+            <div class="hero-content-node">
+                <div class="ganesha-wrapper">
+                    <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" alt="Shree Ganesha Asset">
+                </div>
+                
+                <div class="mantra">|| Shree Ganeshay Namah ||</div>
+                <p class="invitation-line" style="color: #222;">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
+                
+                <h1 class="cursive-name">Saurav</h1>
+                <div class="with-text">with</div>
+                <h1 class="cursive-name">Tannu</h1>
             </div>
         </section>
 
-        <section class="invite-section">
+        <section class="invite-section" style="padding-top: 10px;">
+            <div class="parents-info" style="border-top: none; margin-top: 0; padding-top: 0;">
+                <strong>S/o</strong> Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh
+                <div class="with-text" style="font-size: 1.6rem; margin: 10px 0;">and</div>
+                <strong>D/o</strong> Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
+            </div>
+
             <div class="countdown-container">
-                <span class="save-the-date-title">Save the Date | 24th June 2026</span>
+                <span class="save-the-date-title">24th June 2026</span>
                 
                 <div class="countdown-box" id="timer">
                     <div class="countdown-item" id="days">00<span>Days</span></div>
@@ -386,25 +414,24 @@
             </div>
 
             <h2 class="section-header-cursive">Events Schedule</h2>
-            <p class="invitation-line" style="font-weight:600; color: var(--text-dark);">
+            <p class="invitation-line" style="font-weight:600; color: var(--text-dark); margin-top: 5px;">
                 Wedding & Reception Ceremony:<br>6:30 PM Onwards
             </p>
         </section>
 
-        <section class="invite-section">
+        <section class="invite-section" style="background-color: #fffdf9;">
             <h2 class="section-header-cursive">Where We Celebrate</h2>
             
             <div class="venue-card">
-                <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">Fulai Garden Hall</p>
-                <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">Zirapwadi, Phaltan, Satara, Maharashtra</p>
+                <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">Fulai Garden Hall</p>
+                <p style="font-size: 0.85rem; color: #555; line-height: 1.6;">Zirapwadi, Phaltan, Satara, Maharashtra</p>
                 
-                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Phaltan+Satara+Maharashtra" target="_blank" class="map-btn">Open Map</a>
+                <a href="https://maps.google.com/?q=Fulai+Garden+Hall+Zirapwadi+Phaltan+Satara" target="_blank" class="map-btn">Open Map</a>
             </div>
 
-            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">WITH LOVE</div>
+            <div style="margin-top: 40px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; color: #888;">WITH LOVE</div>
             <div class="footer-names">Saurav & Tannu</div>
             <div class="hashtag">#SAURAVANDTANNU</div>
-            <div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-weight: 500;">[24th June 2026]</div>
         </section>
     </main>
 
@@ -418,17 +445,17 @@
         function generateFlowerPetals() {
             const rootContainer = document.getElementById('petal-container');
             if(!rootContainer) return;
-            const totalPetalsCount = 30; 
+            const totalPetalsCount = 25; 
 
             for (let i = 0; i < totalPetalsCount; i++) {
                 let singlePetal = document.createElement('div');
                 singlePetal.classList.add('petal');
                 
                 let positionLeft = Math.random() * 100;        
-                let variableScale = Math.random() * 14 + 10;   
+                let variableScale = Math.random() * 12 + 10;   
                 let downwardSpeed = Math.random() * 5 + 6;     
                 let swaySpeed = Math.random() * 3 + 2.5;       
-                let timelineDelay = Math.random() * 8;         
+                let timelineDelay = Math.random() * 6;         
 
                 singlePetal.style.left = `${positionLeft}vw`;
                 singlePetal.style.width = `${variableScale}px`;
@@ -440,19 +467,19 @@
             }
         }
 
-        // Updated safe countdown date formatting
-        const targetEventTimestamp = new Date(2026, 5, 24, 18, 30, 0).getTime(); // June 24, 2026 18:30
+        // Live Dynamic Countdown Logic Configuration
+        const targetEventTimestamp = new Date(2026, 5, 24, 18, 30, 0).getTime(); 
 
         const countdownProcessor = setInterval(() => {
             const currentSystemTime = new Date().getTime();
             const distanceRemaining = targetEventTimestamp - currentSystemTime;
 
-            const daysElement = document.getElementById('days');
-            if(!daysElement) return;
+            const timerContainer = document.getElementById('timer');
+            if(!timerContainer) return;
 
             if (distanceRemaining <= 0) {
                 clearInterval(countdownProcessor);
-                document.getElementById('timer').innerHTML = "<div style='font-size:0.75rem; font-weight:bold; color:var(--text-maroon);'>Celebration Started!</div>";
+                timerContainer.innerHTML = "<div style='font-size:0.75rem; font-weight:700; color:var(--text-maroon); letter-spacing:1px;'>CELEBRATION STARTED!</div>";
                 return;
             }
 
@@ -460,9 +487,13 @@
             const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
 
-            daysElement.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
-            document.getElementById('hours').childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
-            document.getElementById('mins').childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('mins');
+
+            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
+            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
+            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
             
         }, 1000);
     </script>
