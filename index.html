@@ -107,7 +107,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,55 L100,0 Z' fill='%23efeadb' stroke='%[...]
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,55 L100,0 Z' fill='%23efeadb' stroke='%23d4af37' stroke-width='0.5'/%3E%3C/svg%3E");
             background-size: 100% 100%;
             z-index: 1;
             pointer-events: none;
@@ -229,64 +229,51 @@
 
         /* --- COUNTDOWN BOX --- */
         .countdown-container {
-            background: linear-gradient(135deg, #f5e6cc 0%, #f0dbb3 100%);
-            border-radius: 20px;
-            padding: 25px;
+            background: #ebdcb9;
+            border-radius: 10px;
+            padding: 10px 15px;
             margin: 30px auto;
-            max-width: 380px;
-            border: 3px solid var(--gold);
+            max-width: 350px;
+            border: 2px solid var(--gold);
             color: var(--text-dark);
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
         }
 
         .save-the-date-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: var(--text-maroon);
-            font-weight: normal;
-            text-align: center;
-            line-height: 1.3;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: bold;
         }
 
         .countdown-box {
             display: flex;
-            gap: 12px;
-            justify-content: center;
-            width: 100%;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-maroon);
         }
 
         .countdown-item {
-            background: #fff;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 2px solid var(--gold);
-            min-width: 70px;
+            background: #f7f1e3;
+            padding: 2px 4px;
+            border-radius: 3px;
+            border: 1px solid var(--gold);
+            min-width: 42px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-        }
-
-        .countdown-item-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-maroon);
-            line-height: 1;
         }
 
         .countdown-item span {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
-            margin-top: 6px;
-            font-weight: 600;
+            margin-top: 1px;
+            font-weight: 500;
             color: var(--text-maroon);
-            letter-spacing: 1px;
         }
 
         .section-header-cursive {
@@ -388,18 +375,9 @@
                 <span class="save-the-date-title">Save the Date | 24th June 2026</span>
                 
                 <div class="countdown-box" id="timer">
-                    <div class="countdown-item">
-                        <div class="countdown-item-value" id="days">00</div>
-                        <span>Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-item-value" id="hours">00</div>
-                        <span>Hrs</span>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-item-value" id="mins">00</div>
-                        <span>Min</span>
-                    </div>
+                    <div class="countdown-item" id="days">00<span>Days</span></div>
+                    <div class="countdown-item" id="hours">00<span>Hrs</span></div>
+                    <div class="countdown-item" id="mins">00<span>Min</span></div>
                 </div>
             </div>
 
@@ -465,17 +443,12 @@
             const currentSystemTime = new Date().getTime();
             const distanceRemaining = targetEventTimestamp - currentSystemTime;
 
-            const dEl = document.getElementById('days');
-            const hEl = document.getElementById('hours');
-            const mEl = document.getElementById('mins');
-
-            if(!dEl || !hEl || !mEl) return;
+            const timerContainer = document.getElementById('timer');
+            if(!timerContainer) return;
 
             if (distanceRemaining <= 0) {
                 clearInterval(countdownProcessor);
-                dEl.textContent = '00';
-                hEl.textContent = '00';
-                mEl.textContent = '00';
+                timerContainer.innerHTML = "<div style='font-size:0.75rem; font-weight:bold; color:var(--text-maroon);'>Celebration Started!</div>";
                 return;
             }
 
@@ -483,9 +456,13 @@
             const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
 
-            dEl.textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
-            hEl.textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
-            mEl.textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('mins');
+
+            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
+            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
+            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
             
         }, 1000);
     </script>
