@@ -78,11 +78,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+            opacity: 1;
+            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.8s ease;
         }
 
         #envelope-screen.opened {
             transform: translateY(-100vh);
+            opacity: 0;
             pointer-events: none;
         }
 
@@ -261,7 +263,7 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            touch-action: none; /* Prevents whole screen scrolling while scratching */
+            touch-action: none; 
             cursor: pointer;
             transition: opacity 0.4s ease-out;
         }
@@ -406,7 +408,7 @@
         
         <section class="invite-section">
             <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" alt="Shree Ganesha Header Asset">
+                <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4211/4211833.png'" alt="Shree Ganesha Header Asset">
             </div>
             
             <div class="mantra">|| Shree Ganeshay Namah ||</div>
@@ -417,7 +419,7 @@
             <h1 class="cursive-name">Tannu</h1>
             
             <div class="parents-info">
-                S/o Mr. Diwakar Misjra & Mrs. Sonu Mishra
+                S/o Mr. Diwakar Mishra & Mrs. Sonu Mishra
                 <div class="with-text" style="font-size: 1.5rem; margin: 15px 0;">and</div>
                 D/o Mr. Pankaj Choubey & Mrs. Ujjwala Choubey
             </div>
@@ -457,57 +459,4 @@
                 <a href="https://maps.google.com" target="_blank" class="map-btn">Open Map</a>
             </div>
 
-            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">WITH LOVE</div>
-            <div class="footer-names">Saurav & Tannu</div>
-            <div class="hashtag">#SAURAVANDTANNU</div>
-            <div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-weight: 500;">[24th June 2026]</div>
-        </section>
-    </main>
-
-    <script>
-        function unlockInvitation() {
-            // 1. Reveal main content layer instantly so layout bounds are calculated properly
-            document.getElementById('mainInviteContainer').style.display = 'block';
-            document.getElementById('envelope-screen').classList.add('opened');
-            
-            // 2. Safely process non-blocking visual animations next
-            setTimeout(() => {
-                generateFlowerPetals();
-                initScratchCard(); 
-            }, 300);
-        }
-
-        function generateFlowerPetals() {
-            const rootContainer = document.getElementById('petal-container');
-            if(!rootContainer) return;
-            const totalPetalsCount = 30; 
-
-            for (let i = 0; i < totalPetalsCount; i++) {
-                let singlePetal = document.createElement('div');
-                singlePetal.classList.add('petal');
-                
-                let positionLeft = Math.random() * 100;        
-                let variableScale = Math.random() * 14 + 10;   
-                let downwardSpeed = Math.random() * 5 + 6;     
-                let swaySpeed = Math.random() * 3 + 2.5;       
-                let timelineDelay = Math.random() * 8;         
-
-                singlePetal.style.left = `${positionLeft}vw`;
-                singlePetal.style.width = `${variableScale}px`;
-                singlePetal.style.height = `${variableScale}px`;
-                singlePetal.style.animationDuration = `${downwardSpeed}s, ${swaySpeed}s`;
-                singlePetal.style.animationDelay = `${timelineDelay}s, ${timelineDelay}s`;
-
-                rootContainer.appendChild(singlePetal);
-            }
-        }
-
-        /* --- INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
-        function initScratchCard() {
-            const canvas = document.getElementById('scratch-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d', { willReadFrequently: true });
-            
-            // Fixed container calculation lookup safely after element display is set to block
-            const wrapper = canvas.parentNode;
-            canvas.width = wrapper.clientWidth
+            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font
