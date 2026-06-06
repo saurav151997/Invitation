@@ -6,7 +6,7 @@
     <title>Saurav & Tannu's Wedding Invitation ✨</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght=0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
         :root {
             --sage-bg: #9eb39f;        
@@ -32,7 +32,7 @@
             position: relative;
         }
 
-        /* --- FALLING PETALS ANIMATION --- */
+        /* --- FALLING PETALS --- */
         #petal-container {
             position: fixed;
             top: 0;
@@ -152,7 +152,7 @@
             margin-top: 5px;
         }
 
-        /* --- SCREEN 2: MAIN SCROLLING INVITATION --- */
+        /* --- SCREEN 2: MAIN INVITATION --- */
         .main-invitation {
             max-width: 460px;
             margin: 0 auto;
@@ -170,18 +170,12 @@
             text-align: center;
         }
 
-        .ganesha-wrapper {
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .ganesha-img {
-            width: 140px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        /* Pure Inline Vector Ganesha Graphic Frame */
+        .ganesha-vector-frame {
+            width: 90px;
+            height: 100px;
+            margin: 0 auto 15px auto;
+            color: var(--gold-dark);
         }
 
         .mantra {
@@ -191,7 +185,6 @@
             font-weight: 500;
             letter-spacing: 2px;
             margin-bottom: 25px;
-            margin-top: 5px;
         }
 
         .invitation-line {
@@ -228,7 +221,7 @@
             font-weight: 500;
         }
 
-        /* --- SCRATCH CARD SYSTEM --- */
+        /* --- SCRATCH CARD CONTAINER --- */
         .scratch-card-wrapper {
             position: relative;
             width: 100%;
@@ -268,7 +261,21 @@
             transition: opacity 0.4s ease-out;
         }
 
-        /* --- CONFETTI OVERLAY --- */
+        /* Alternative Tap Trigger Button Fallback */
+        .fallback-reveal-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px dashed var(--gold-dark);
+            color: var(--text-maroon);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* --- CONFETTI --- */
         #confetti-canvas {
             position: fixed;
             top: 0;
@@ -280,7 +287,7 @@
             display: none;
         }
 
-        /* --- COUNTDOWN BOX --- */
+        /* --- TIMER --- */
         .countdown-container {
             background: #ebdcb9;
             border-radius: 10px;
@@ -360,4 +367,334 @@
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(11
+            box-shadow: 0 4px 15px rgba(110, 28, 36, 0.25);
+            transition: transform 0.2s;
+        }
+
+        .map-btn:active {
+            transform: scale(0.96);
+        }
+
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--text-maroon);
+            margin-top: 35px;
+        }
+
+        .hashtag {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="petal-container"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div id="envelope-screen">
+        <div class="envelope" onclick="unlockInvitation()">
+            <div class="wax-seal">
+                <div class="wax-seal-inner">S & T</div>
+            </div>
+        </div>
+        <h1 class="landing-title">You're Invited</h1>
+        <p class="landing-subtitle">Tap envelope to view invitation</p>
+    </div>
+
+    <main class="main-invitation" id="mainInviteContainer">
+        
+        <section class="invite-section">
+            <div class="ganesha-vector-frame">
+                <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
+                    <path d="M12,2A3,3 0 0,1 15,5V6H16A3,3 0 0,1 19,9V10A3,3 0 0,1 22,13A3,3 0 0,1 19,16H18V17A3,3 0 0,1 15,20H14V21A1,1 0 0,1 13,22H11A1,1 0 0,1 10,21V20H9A3,3 0 0,1 6,17V16H5A3,3 0 0,1 2,13A3,3 0 0,1 5,10V9A3,3 0 0,1 8,6H9V5A3,3 0 0,1 12,2M12,4A1,1 0 0,0 11,5V6H13V5A1,1 0 0,0 12,4M8,8A1,1 0 0,0 7,9V11H9V9A1,1 0 0,0 8,8M16,8A1,1 0 0,0 15,9V11H17V9A1,1 0 0,0 16,8M5,12A1,1 0 0,0 4,13A1,1 0 0,0 5,14H6V12H5M19,12V14H20A1,1 0 0,0 21,13A1,1 0 0,0 19,12M9,15V18H15V15H9Z"/>
+                </svg>
+            </div>
+            
+            <div class="mantra">|| Shree Ganeshay Namah ||</div>
+            <p class="invitation-line">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of...</p>
+            
+            <h1 class="cursive-name">Saurav</h1>
+            <div class="with-text">with</div>
+            <h1 class="cursive-name">Tannu</h1>
+            
+            <div class="parents-info">
+                S/o Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh
+                <div class="with-text" style="font-size: 1.5rem; margin: 12px 0;">and</div>
+                D/o Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
+            </div>
+        </section>
+
+        <section class="invite-section" style="background-color: rgba(212,175,55,0.04); border-top: 1px dashed #e4d8be; border-bottom: 1px dashed #e4d8be;">
+            <h2 class="section-header-cursive" style="margin-top:0;">Reveal the Date ✨</h2>
+            
+            <div class="scratch-card-wrapper">
+                <div class="scratch-under-content">
+                    <span class="save-the-date-title">Wednesday, 24th June 2026</span>
+                    
+                    <div class="countdown-container">
+                        <div class="countdown-box" id="timer" style="width: 100%; justify-content: space-around;">
+                            <div class="countdown-item" id="days">00<span>Days</span></div>
+                            <div class="countdown-item" id="hours">00<span>Hrs</span></div>
+                            <div class="countdown-item" id="mins">00<span>Min</span></div>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="scratch-canvas"></canvas>
+            </div>
+            
+            <div class="fallback-reveal-btn" onclick="forceClearScratchCard()">Can't Scratch? Tap Here to Reveal</div>
+
+            <h2 class="section-header-cursive">Events Schedule</h2>
+            <p class="invitation-line" style="font-weight:600; color: var(--text-dark);">
+                Engagement Ceremony:<br>10:30 AM Onwards
+            </p>
+        </section>
+
+        <section class="invite-section">
+            <h2 class="section-header-cursive">Where We Celebrate</h2>
+            
+            <div class="venue-card">
+                <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">Fulai Garden Hall</p>
+                <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">Zirapwadi, Phaltan, Satara, Maharashtra</p>
+                
+                <a href="https://maps.google.com" target="_blank" class="map-btn">Open Map</a>
+            </div>
+
+            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">WITH LOVE</div>
+            <div class="footer-names">Saurav & Tannu</div>
+            <div class="hashtag">#SAURAVANDTANNU</div>
+            <div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-weight: 500;">[24th June 2026]</div>
+        </section>
+    </main>
+
+    <script>
+        function unlockInvitation() {
+            const mainContainer = document.getElementById('mainInviteContainer');
+            const envelopeScreen = document.getElementById('envelope-screen');
+            
+            if (!mainContainer || !envelopeScreen) return;
+
+            mainContainer.style.display = 'block';
+            envelopeScreen.classList.add('opened');
+            
+            setTimeout(() => {
+                envelopeScreen.style.display = 'none';
+            }, 800);
+
+            generateFlowerPetals();
+            initScratchCard(); 
+        }
+
+        function generateFlowerPetals() {
+            const rootContainer = document.getElementById('petal-container');
+            if(!rootContainer) return;
+            const totalPetalsCount = 25; 
+
+            for (let i = 0; i < totalPetalsCount; i++) {
+                let singlePetal = document.createElement('div');
+                singlePetal.classList.add('petal');
+                
+                let positionLeft = Math.random() * 100;        
+                let variableScale = Math.random() * 14 + 10;   
+                let downwardSpeed = Math.random() * 5 + 6;     
+                let swaySpeed = Math.random() * 3 + 2.5;       
+                let timelineDelay = Math.random() * 6;         
+
+                singlePetal.style.left = `${positionLeft}vw`;
+                singlePetal.style.width = `${variableScale}px`;
+                singlePetal.style.height = `${variableScale}px`;
+                singlePetal.style.animationDuration = `${downwardSpeed}s, ${swaySpeed}s`;
+                singlePetal.style.animationDelay = `${timelineDelay}s, ${timelineDelay}s`;
+
+                rootContainer.appendChild(singlePetal);
+            }
+        }
+
+        /* --- SCRATCH CARD LOGIC (NO DELEGATED EXT ASSETS) --- */
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            const wrapper = canvas.parentNode;
+            canvas.width = wrapper.clientWidth || 340;
+            canvas.height = wrapper.clientHeight || 160;
+
+            // Matte Solid Gold Base Surface Coating
+            ctx.fillStyle = '#dfab41';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Texture Pattern
+            ctx.fillStyle = '#b8851c';
+            for (let i = 0; i < canvas.width; i += 15) {
+                for (let j = 0; j < canvas.height; j += 15) {
+                    ctx.fillRect(i + Math.random()*4, j + Math.random()*4, 2, 2);
+                }
+            }
+
+            // Foreground Instruction Label Text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px Montserrat, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Scratch here to see Date ✨', canvas.width / 2, canvas.height / 2);
+
+            let isDrawing = false;
+
+            function getCoordinates(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            function scratchStart(e) {
+                isDrawing = true;
+                scratchMove(e);
+            }
+
+            function scratchMove(e) {
+                if (!isDrawing) return;
+                e.preventDefault(); 
+                
+                const coords = getCoordinates(e);
+
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(coords.x, coords.y, 24, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function scratchEnd() {
+                isDrawing = false;
+            }
+
+            canvas.addEventListener('mousedown', scratchStart);
+            canvas.addEventListener('mousemove', scratchMove);
+            window.addEventListener('mouseup', scratchEnd);
+
+            canvas.addEventListener('touchstart', scratchStart);
+            canvas.addEventListener('touchmove', scratchMove);
+            window.addEventListener('touchend', scratchEnd);
+        }
+
+        // Direct reveal utility bypassing scratch interface tracking completely
+        function forceClearScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            if (canvas) {
+                canvas.style.opacity = '0';
+                canvas.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    canvas.remove();
+                    triggerConfettiShower();
+                }, 300);
+            }
+            const fallbackBtn = document.querySelector('.fallback-reveal-btn');
+            if(fallbackBtn) fallbackBtn.style.display = 'none';
+        }
+
+        /* --- CONFETTI SYSTEM --- */
+        let confettiParticles = [];
+        let confettiAnimationId = null;
+
+        function triggerConfettiShower() {
+            const canvas = document.getElementById('confetti-canvas');
+            if(!canvas) return;
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const premiumColors = ['#dfab41', '#b8851c', '#822931', '#ffb6c1', '#ffffff'];
+            confettiParticles = [];
+
+            for (let i = 0; i < 80; i++) {
+                confettiParticles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * -canvas.height - 20,
+                    size: Math.random() * 6 + 4,
+                    color: premiumColors[Math.floor(Math.random() * premiumColors.length)],
+                    speedX: Math.random() * 4 - 2,
+                    speedY: Math.random() * 5 + 4,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 4 - 2
+                });
+            }
+
+            let loopCount = 0;
+            function runConfettiLoop() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let fragmentsActive = false;
+
+                confettiParticles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.rotationSpeed;
+
+                    if (p.y < canvas.height) fragmentsActive = true;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                });
+
+                loopCount++;
+                if (fragmentsActive && loopCount < 180) {
+                    confettiAnimationId = requestAnimationFrame(runConfettiLoop);
+                } else {
+                    cancelAnimationFrame(confettiAnimationId);
+                    canvas.style.display = 'none';
+                }
+            }
+            runConfettiLoop();
+        }
+
+        // Live Event Countdown Clock Tracking System
+        const targetEventTimestamp = new Date(2026, 5, 24, 10, 30, 0).getTime(); 
+
+        const countdownProcessor = setInterval(() => {
+            const currentSystemTime = new Date().getTime();
+            const distanceRemaining = targetEventTimestamp - currentSystemTime;
+
+            const timerContainer = document.getElementById('timer');
+            if(!timerContainer) return;
+
+            if (distanceRemaining <= 0) {
+                clearInterval(countdownProcessor);
+                timerContainer.innerHTML = "<div style='font-size:0.85rem; font-weight:bold; color:var(--text-maroon); letter-spacing:1px;'>CELEBRATION STARTED!</div>";
+                return;
+            }
+
+            const calculationDays = Math.floor(distanceRemaining / (1000 * 60 * 60 * 24));
+            const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
+
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('mins');
+
+            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
+            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
+            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
+            
+        }, 1000);
+    </script>
+</body>
+</html>
