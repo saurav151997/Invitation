@@ -108,3 +108,361 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L50,55 L100,0 Z' fill='%23efeadb' stroke='%23d4af37' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .wax-seal {
+            position: relative;
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #f5d376 0%, #ca9b2c 70%, #9a7217 100%);
+            border-radius: 50%;
+            z-index: 2;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #b88d21;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .wax-seal-inner {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .landing-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #2b3d27;
+            margin-top: 40px;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.3);
+        }
+
+        .landing-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #435c3e;
+            margin-top: 5px;
+        }
+
+        /* --- SCREEN 2: MAIN INVITATION --- */
+        .main-invitation {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--cream-bg);
+            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+            min-height: 100vh;
+            display: none;
+            /* Added a subtle floral background texture gradient */
+            background-image: radial-gradient(circle at top right, rgba(255,220,224,0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(158,179,159,0.1), transparent 40%);
+        }
+
+        .invite-section {
+            position: relative;
+            padding: 50px 25px;
+            text-align: center;
+        }
+
+        .ganesha-svg {
+            width: 55px;
+            height: 55px;
+            fill: var(--gold-dark);
+            margin-bottom: 10px;
+        }
+
+        .mantra {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .invitation-line {
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 320px;
+            margin: 15px auto;
+            font-style: italic;
+        }
+
+        .cursive-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5.5rem; /* Increased size to match reference */
+            color: var(--text-maroon);
+            line-height: 0.9;
+            margin: 10px 0;
+            font-weight: normal;
+        }
+
+        .with-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin: 15px 0;
+        }
+
+        .parents-info {
+            font-size: 0.75rem;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 5px;
+            text-transform: capitalize;
+        }
+
+        /* --- COUNTDOWN BOX (Gold styling from reference) --- */
+        .countdown-container {
+            background: var(--gold-gradient);
+            border-radius: 12px;
+            padding: 25px 15px;
+            margin: 30px auto;
+            max-width: 340px;
+            box-shadow: 0 10px 25px rgba(184, 133, 28, 0.25);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .save-the-date-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .countdown-item {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 55px;
+        }
+
+        .countdown-item span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .countdown-divider {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            padding-bottom: 18px;
+            opacity: 0.8;
+        }
+
+        .section-header-cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--text-maroon);
+            margin: 30px 0 15px 0;
+        }
+
+        /* --- VENUE CARD --- */
+        .venue-card {
+            width: 100%;
+            background: #fff;
+            margin: 20px auto;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--text-maroon);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(110, 28, 36, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .map-btn:active {
+            transform: scale(0.95);
+        }
+
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--text-maroon);
+            margin-top: 40px;
+        }
+
+        .hashtag {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="petal-container"></div>
+
+    <div id="envelope-screen">
+        <div class="envelope" onclick="unlockInvitation()">
+            <div class="wax-seal">
+                <div class="wax-seal-inner">S & T</div>
+            </div>
+        </div>
+        <h1 class="landing-title">You're Invited</h1>
+        <p class="landing-subtitle">Tap the envelope to open your invitation</p>
+    </div>
+
+    <main class="main-invitation" id="mainInviteContainer">
+        
+        <section class="invite-section">
+            <svg class="ganesha-svg" viewBox="0 0 24 24">
+                <path d="M12,2A2,2 0 0,0 10,4C10,4.75 10.4,5.42 11,5.77V7.23C9.31,7.63 8,9.16 8,11V13H7A2,2 0 0,0 5,15V17A2,2 0 0,0 7,19H8V20A2,2 0 0,0 10,22H14A2,2 0 0,0 16,20V19H17A2,2 0 0,0 19,17V15A2,2 0 0,0 17,13H16V11C16,9.16 14.69,7.63 13,7.23V5.77C13.6,5.42 14,4.75 14,4A2,2 0 0,0 12,2M10,11H14V13H10V11Z" />
+            </svg>
+            <div class="mantra">|| Shree Ganeshay Namah ||</div>
+            <p class="invitation-line">We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of</p>
+            
+            <h1 class="cursive-name">Saurav</h1>
+            <div class="parents-info">
+                S/o Mr. Sanjay Deshmukh<br>& Mrs. Seema Deshmukh
+            </div>
+            
+            <div class="with-text">with</div>
+            
+            <h1 class="cursive-name">Tannu</h1>
+            <div class="parents-info">
+                D/o Mr. Dasharath Yadav<br>& Mrs. Ujjwala Yadav
+            </div>
+        </section>
+
+        <section class="invite-section">
+            <div class="countdown-container">
+                <h2 class="save-the-date-title">Save the Date | 24th June 2026</h2>
+                
+                <div class="countdown-box" id="timer">
+                    <div class="countdown-item" id="days">00<span>Day</span></div>
+                    <div class="countdown-divider">:</div>
+                    <div class="countdown-item" id="hours">00<span>Mo</span></div> <div class="countdown-divider">:</div>
+                    <div class="countdown-item" id="mins">00<span>Yr</span></div>  </div>
+            </div>
+
+            <h2 class="section-header-cursive">Events Schedule</h2>
+            <p class="invitation-line" style="font-weight:600; color: var(--text-dark); font-style: normal;">
+                Wedding & Reception Ceremony<br>6:30 PM Onwards
+            </p>
+        </section>
+
+        <section class="invite-section">
+            <h2 class="section-header-cursive">Where We Celebrate</h2>
+            
+            <div class="venue-card">
+                <p style="font-size: 0.9rem; font-weight:600; color: var(--text-dark); margin-bottom: 5px;">Singapore Suntec City Convention Hall</p>
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Fulai Garden, Zirapwadi, Phaltan, Satara, Maharashtra</p>
+                
+                <a href="https://maps.google.com" target="_blank" class="map-btn">Open Map</a>
+            </div>
+
+            <div style="margin-top: 40px; font-size: 0.8rem; letter-spacing: 2px;">WITH LOVE</div>
+            <div class="footer-names">Saurav & Tannu</div>
+            <div class="hashtag">#SAURAVANDTANNU</div>
+            <div style="margin-top: 10px; font-size: 0.8rem; color: #555;">[24th June 2026]</div>
+        </section>
+    </main>
+
+    <script>
+        // 1. Envelope Unlock Logic
+        function unlockInvitation() {
+            document.getElementById('envelope-screen').classList.add('opened');
+            document.getElementById('mainInviteContainer').style.display = 'block';
+            
+            // Start petal animation slightly after opening
+            setTimeout(createPetals, 500);
+        }
+
+        // 2. Falling Petals Generator Logic
+        function createPetals() {
+            const container = document.getElementById('petal-container');
+            const petalCount = 25; // Number of petals falling simultaneously
+
+            for (let i = 0; i < petalCount; i++) {
+                let petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                // Randomize positions, sizes, and animation durations
+                let randomLeft = Math.random() * 100; // 0 to 100vw
+                let randomSize = Math.random() * 15 + 10; // 10px to 25px
+                let randomFallDuration = Math.random() * 6 + 6; // 6s to 12s
+                let randomSwayDuration = Math.random() * 3 + 2; // 2s to 5s
+                let randomDelay = Math.random() * 10; // 0s to 10s delay
+
+                petal.style.left = `${randomLeft}vw`;
+                petal.style.width = `${randomSize}px`;
+                petal.style.height = `${randomSize}px`;
+                petal.style.animationDuration = `${randomFallDuration}s, ${randomSwayDuration}s`;
+                petal.style.animationDelay = `${randomDelay}s, ${randomDelay}s`;
+
+                container.appendChild(petal);
+            }
+        }
+
+        // 3. Target Date Countdown Timer Logic
+        const targetedDate = new Date("Jun 24, 2026 18:30:00").getTime();
+
+        const counter = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetedDate - now;
+
+            if (difference <= 0) {
+                clearInterval(counter);
+                document.getElementById('timer').innerHTML = "<div style='font-size: 1.5rem; font-family: Playfair Display, serif;'>The Celebration Has Begun!</div>";
+                return;
+            }
+
+            // Using Day / Mo / Yr visual format from the image, but piping accurate countdown data into it
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('days').childNodes[0].textContent = d < 10 ? '0' + d : d;
+            document.getElementById('hours').childNodes[0].textContent = h < 10 ? '0' + h : h;
+            document.getElementById('mins').childNodes[0].textContent = m < 10 ? '0' + m : m;
+            
+        }, 1000);
+    </script>
+</body>
+</html>
