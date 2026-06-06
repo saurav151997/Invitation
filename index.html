@@ -175,7 +175,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 140px;
         }
 
         .ganesha-img {
@@ -409,7 +408,33 @@
         
         <section class="invite-section">
             <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="ganesha.png" alt="Shree Ganesha Header Icon">
+                <svg class="ganesha-img" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M160 110 L240 110 L230 70 L200 30 L170 70 Z" fill="#E6A11D" stroke="#C4800A" stroke-width="3"/>
+                    <path d="M175 70 L225 70 L200 40 Z" fill="#F3C343"/>
+                    <circle cx="200" cy="60" r="5" fill="#D32F2F"/>
+                    <circle cx="200" cy="25" r="4" fill="#D32F2F"/>
+                    <path d="M150 110 C150 110 135 125 155 135 C175 145 200 145 200 145" fill="none" stroke="#E6A11D" stroke-width="4"/>
+                    <path d="M250 110 C250 110 265 125 245 135 C225 145 200 145 200 145" fill="none" stroke="#E6A11D" stroke-width="4"/>
+                    <path d="M165 140 C120 140 90 160 105 210 C115 240 145 240 165 220" fill="#FCE4EC" stroke="#E6A11D" stroke-width="2"/>
+                    <path d="M235 140 C280 140 310 160 295 210 C285 240 255 240 235 220" fill="#FCE4EC" stroke="#E6A11D" stroke-width="2"/>
+                    <path d="M150 160 C125 160 110 175 115 200 C120 215 135 215 150 205" fill="#F8BBD0"/>
+                    <path d="M250 160 C275 160 290 175 285 200 C280 215 265 215 250 205" fill="#F8BBD0"/>
+                    <path d="M165 140 C165 140 155 230 200 250 C245 230 235 140 235 140 Z" fill="#FFF9C4" stroke="#E6A11D" stroke-width="1"/>
+                    <path d="M190 200 C190 250 160 290 195 320 C220 340 240 310 230 290 C220 270 210 250 210 200" fill="#FFF9C4" stroke="#E6A11D" stroke-width="2"/>
+                    <path d="M193 130 Q200 120 207 130 Q207 165 200 185 Q193 165 193 130 Z" fill="#D32F2F"/>
+                    <path d="M185 145 Q200 152 215 145" fill="none" stroke="#FBC02D" stroke-width="3"/>
+                    <path d="M182 155 Q200 162 218 155" fill="none" stroke="#FBC02D" stroke-width="3"/>
+                    <circle cx="200" cy="140" r="3.5" fill="#FBC02D"/>
+                    <path d="M173 175 Q183 170 190 178" fill="none" stroke="#37474F" stroke-width="3"/>
+                    <path d="M227 175 Q217 170 210 178" fill="none" stroke="#37474F" stroke-width="3"/>
+                    <circle cx="182" cy="180" r="3" fill="#37474F"/>
+                    <circle cx="218" cy="180" r="3" fill="#37474F"/>
+                    <path d="M180 215 L165 220 L180 222 Z" fill="#FFFFFF"/>
+                    <path d="M220 215 L230 218 L220 222 Z" fill="#FFFFFF"/>
+                    <path d="M130 350 C160 330 240 330 270 350 C310 380 300 410 200 410 C100 410 90 380 130 350 Z" fill="#FF8A80" stroke="#D32F2F" stroke-width="2"/>
+                    <path d="M150 360 C180 345 220 345 250 360 C280 385 210 400 200 400 C190 400 120 385 150 360 Z" fill="#FF5252"/>
+                    <path d="M225 295 Q235 280 245 295 Q235 305 225 295 Z" fill="#FBC02D" stroke="#F57F17" stroke-width="1"/>
+                </svg>
             </div>
             
             <div class="mantra">|| Shree Ganeshay Namah ||</div>
@@ -510,7 +535,7 @@
             }
         }
 
-        /* --- SAFE INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
+        /* --- INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
         function initScratchCard() {
             const canvas = document.getElementById('scratch-canvas');
             if (!canvas) return;
@@ -520,11 +545,11 @@
             canvas.width = wrapper.clientWidth || 340;
             canvas.height = wrapper.clientHeight || 160;
 
-            // Paint stable solid fill canvas top coating color block
+            // Paint background color box 
             ctx.fillStyle = '#dfab41';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Textures
+            // Texture patterns
             ctx.fillStyle = '#b8851c';
             for (let i = 0; i < canvas.width; i += 15) {
                 for (let j = 0; j < canvas.height; j += 15) {
@@ -532,7 +557,7 @@
                 }
             }
 
-            // Overlay prompt
+            // Overlay instructions text 
             ctx.fillStyle = '#ffffff';
             ctx.font = 'bold 16px Montserrat, sans-serif';
             ctx.textAlign = 'center';
@@ -571,12 +596,12 @@
             function scratchEnd() {
                 if (isDrawing) {
                     isDrawing = false;
-                    // Simple gesture tracking triggers immediate fallback auto-clearing to prevent crashes
+                    // Auto-clears neatly when interactions complete 
                     setTimeout(() => {
                         canvas.style.opacity = '0';
                         canvas.style.pointerEvents = 'none';
                         triggerConfettiShower();
-                    }, 1200);
+                    }, 1500);
                 }
             }
 
@@ -589,7 +614,7 @@
             window.addEventListener('touchend', scratchEnd);
         }
 
-        /* --- SYSTEMS CONFETTI OVERLAY --- */
+        /* --- CONFETTI ANIMATION SYSTEM --- */
         let confettiParticles = [];
         let confettiAnimationId = null;
 
@@ -661,23 +686,3 @@
 
             if (distanceRemaining <= 0) {
                 clearInterval(countdownProcessor);
-                timerContainer.innerHTML = "<div style='font-size:0.85rem; font-weight:bold; color:var(--text-maroon); letter-spacing:1px;'>CELEBRATION STARTED!</div>";
-                return;
-            }
-
-            const calculationDays = Math.floor(distanceRemaining / (1000 * 60 * 60 * 24));
-            const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
-
-            const dEl = document.getElementById('days');
-            const hEl = document.getElementById('hours');
-            const mEl = document.getElementById('mins');
-
-            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
-            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
-            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
-            
-        }, 1000);
-    </script>
-</body>
-</html>
