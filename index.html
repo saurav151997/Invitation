@@ -79,7 +79,7 @@
             justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.8s ease;
+            transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease;
         }
 
         #envelope-screen.opened {
@@ -220,8 +220,8 @@
 
         .parents-info {
             font-size: 0.8rem;
-            color: #777;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.8;
             margin-top: 25px;
             padding-top: 20px;
             border-top: 1px dashed #e4d8be;
@@ -408,7 +408,7 @@
         
         <section class="invite-section">
             <div class="ganesha-wrapper">
-                <img class="ganesha-img" src="https://i.postimg.cc/HnbdYjJ9/Untitled-June-06-2026-at-17-22-55-(2).png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4211/4211833.png'" alt="Shree Ganesha Header Asset">
+                <img class="ganesha-img" src="https://img.icons8.com/color/144/ganesha.png" alt="Shree Ganesha Header Icon">
             </div>
             
             <div class="mantra">|| Shree Ganeshay Namah ||</div>
@@ -419,9 +419,9 @@
             <h1 class="cursive-name">Tannu</h1>
             
             <div class="parents-info">
-                S/o Mr. Diwakar Mishra & Mrs. Sonu Mishra
-                <div class="with-text" style="font-size: 1.5rem; margin: 15px 0;">and</div>
-                D/o Mr. Pankaj Choubey & Mrs. Ujjwala Choubey
+                S/o Mr. Sanjay Deshmukh & Mrs. Seema Deshmukh
+                <div class="with-text" style="font-size: 1.5rem; margin: 12px 0;">and</div>
+                D/o Mr. Dasharath Yadav & Mrs. Ujjwala Yadav
             </div>
         </section>
 
@@ -459,4 +459,241 @@
                 <a href="https://maps.google.com" target="_blank" class="map-btn">Open Map</a>
             </div>
 
-            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font
+            <div style="margin-top: 45px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">WITH LOVE</div>
+            <div class="footer-names">Saurav & Tannu</div>
+            <div class="hashtag">#SAURAVANDTANNU</div>
+            <div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-weight: 500;">[24th June 2026]</div>
+        </section>
+    </main>
+
+    <script>
+        function unlockInvitation() {
+            const mainContainer = document.getElementById('mainInviteContainer');
+            const envelopeScreen = document.getElementById('envelope-screen');
+            
+            if (!mainContainer || !envelopeScreen) return;
+
+            // Force layout block instantly so elements are given widths/heights
+            mainContainer.style.display = 'block';
+            envelopeScreen.classList.add('opened');
+            
+            // Unbind layout obstruction after CSS transform animations finish natively
+            setTimeout(() => {
+                envelopeScreen.style.display = 'none';
+            }, 800);
+
+            // Trigger animations
+            generateFlowerPetals();
+            initScratchCard(); 
+        }
+
+        function generateFlowerPetals() {
+            const rootContainer = document.getElementById('petal-container');
+            if(!rootContainer) return;
+            const totalPetalsCount = 25; 
+
+            for (let i = 0; i < totalPetalsCount; i++) {
+                let singlePetal = document.createElement('div');
+                singlePetal.classList.add('petal');
+                
+                let positionLeft = Math.random() * 100;        
+                let variableScale = Math.random() * 14 + 10;   
+                let downwardSpeed = Math.random() * 5 + 6;     
+                let swaySpeed = Math.random() * 3 + 2.5;       
+                let timelineDelay = Math.random() * 6;         
+
+                singlePetal.style.left = `${positionLeft}vw`;
+                singlePetal.style.width = `${variableScale}px`;
+                singlePetal.style.height = `${variableScale}px`;
+                singlePetal.style.animationDuration = `${downwardSpeed}s, ${swaySpeed}s`;
+                singlePetal.style.animationDelay = `${timelineDelay}s, ${timelineDelay}s`;
+
+                rootContainer.appendChild(singlePetal);
+            }
+        }
+
+        /* --- INTERACTIVE CANVAS SCRATCH CARD LOGIC --- */
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            
+            const wrapper = canvas.parentNode;
+            canvas.width = wrapper.clientWidth || 340;
+            canvas.height = wrapper.clientHeight || 160;
+
+            // Base coating
+            ctx.fillStyle = '#dfab41';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Texture
+            ctx.fillStyle = '#b8851c';
+            for (let i = 0; i < canvas.width; i += 15) {
+                for (let j = 0; j < canvas.height; j += 15) {
+                    ctx.fillRect(i + Math.random()*4, j + Math.random()*4, 2, 2);
+                }
+            }
+
+            // Text string instruction label
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px Montserrat, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Scratch here to see Date ✨', canvas.width / 2, canvas.height / 2);
+
+            let isDrawing = false;
+
+            function getCoordinates(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            function scratchStart(e) {
+                isDrawing = true;
+                scratchMove(e);
+            }
+
+            function scratchMove(e) {
+                if (!isDrawing) return;
+                e.preventDefault(); 
+                
+                const coords = getCoordinates(e);
+
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(coords.x, coords.y, 24, 0, Math.PI * 2);
+                ctx.fill();
+                
+                checkScratchPercentage();
+            }
+
+            function scratchEnd() {
+                isDrawing = false;
+            }
+
+            function checkScratchPercentage() {
+                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const pixels = imgData.data;
+                let clearedPixels = 0;
+
+                for (let i = 3; i < pixels.length; i += 32) {
+                    if (pixels[i] === 0) clearedPixels++;
+                }
+
+                const totalSamplePixels = pixels.length / 32;
+                if ((clearedPixels / totalSamplePixels) > 0.35) {
+                    canvas.style.opacity = '0';
+                    canvas.style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        canvas.remove();
+                        triggerConfettiShower();
+                    }, 400);
+                }
+            }
+
+            canvas.addEventListener('mousedown', scratchStart);
+            canvas.addEventListener('mousemove', scratchMove);
+            window.addEventListener('mouseup', scratchEnd);
+
+            canvas.addEventListener('touchstart', scratchStart);
+            canvas.addEventListener('touchmove', scratchMove);
+            window.addEventListener('touchend', scratchEnd);
+        }
+
+        /* --- SYSTEMS CONFETTI OVERLAY --- */
+        let confettiParticles = [];
+        let confettiAnimationId = null;
+
+        function triggerConfettiShower() {
+            const canvas = document.getElementById('confetti-canvas');
+            if(!canvas) return;
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const premiumColors = ['#dfab41', '#b8851c', '#822931', '#ffb6c1', '#ffffff'];
+            confettiParticles = [];
+
+            for (let i = 0; i < 80; i++) {
+                confettiParticles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * -canvas.height - 20,
+                    size: Math.random() * 6 + 4,
+                    color: premiumColors[Math.floor(Math.random() * premiumColors.length)],
+                    speedX: Math.random() * 4 - 2,
+                    speedY: Math.random() * 5 + 4,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 4 - 2
+                });
+            }
+
+            let loopCount = 0;
+            function runConfettiLoop() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let fragmentsActive = false;
+
+                confettiParticles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.rotationSpeed;
+
+                    if (p.y < canvas.height) fragmentsActive = true;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                });
+
+                loopCount++;
+                if (fragmentsActive && loopCount < 180) {
+                    confettiAnimationId = requestAnimationFrame(runConfettiLoop);
+                } else {
+                    cancelAnimationFrame(confettiAnimationId);
+                    canvas.style.display = 'none';
+                }
+            }
+            runConfettiLoop();
+        }
+
+        // Countdown Target Configured for June 24, 2026
+        const targetEventTimestamp = new Date(2026, 5, 24, 10, 30, 0).getTime(); 
+
+        const countdownProcessor = setInterval(() => {
+            const currentSystemTime = new Date().getTime();
+            const distanceRemaining = targetEventTimestamp - currentSystemTime;
+
+            const timerContainer = document.getElementById('timer');
+            if(!timerContainer) return;
+
+            if (distanceRemaining <= 0) {
+                clearInterval(countdownProcessor);
+                timerContainer.innerHTML = "<div style='font-size:0.85rem; font-weight:bold; color:var(--text-maroon); letter-spacing:1px;'>CELEBRATION STARTED!</div>";
+                return;
+            }
+
+            const calculationDays = Math.floor(distanceRemaining / (1000 * 60 * 60 * 24));
+            const calculationHours = Math.floor((distanceRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const calculationMinutes = Math.floor((distanceRemaining % (1000 * 60 * 60)) / (1000 * 60));
+
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('mins');
+
+            if(dEl) dEl.childNodes[0].textContent = calculationDays < 10 ? '0' + calculationDays : calculationDays;
+            if(hEl) hEl.childNodes[0].textContent = calculationHours < 10 ? '0' + calculationHours : calculationHours;
+            if(mEl) mEl.childNodes[0].textContent = calculationMinutes < 10 ? '0' + calculationMinutes : calculationMinutes;
+            
+        }, 1000);
+    </script>
+</body>
+</html>
